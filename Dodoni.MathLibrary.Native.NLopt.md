@@ -30,7 +30,15 @@ The class {{NLoptPtr}} serves as wrapper for the internal opaque pointer of the 
 {code:c#}
 
  **NLoptMultiDimOptimizer**
-In contrast to {{NLoptPtr}} the class {{NLoptMultiDimOptimizer}} implements the more common class {{(Ordinary)MultiDimOptimizer}} of [Dodoni.BasicMathLibrary](BasicMathLibrary) which serves as general infastructure for multi-dimensional optimization. Therefore one first create a specific {{(NLopt}MultiDimOptimizer}} object. Constraints and the representation of the objective function are specific for the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt). Therefore one has to apply the specific factory for it. The following code snippet shows a simple example.
+In contrast to {{NLoptPtr}} the class 
+{{NLoptMultiDimOptimizer}} implements the more common class
+{{(Ordinary)MultiDimOptimizer}} of 
+[Dodoni.BasicMathLibrary](BasicMathLibrary) which 
+serves as general infastructure for multi-dimensional optimization. Therefore one first create a 
+specific {{(NLopt}MultiDimOptimizer}} object. 
+Constraints and the representation of the objective function are specific for the
+[NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt). 
+Therefore one has to apply the specific factory for it. The following code snippet shows a simple example.
 
 {code:c#}
  var cobyla = new NLoptMultiDimOptimizer(NLoptAlgorithm.LN_COBYLA);
