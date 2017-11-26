@@ -50,15 +50,16 @@ This enables to incorporate the functionality of 3th party mathematical librarie
 :: {{Dodoni.MathLibary.Native.<Name of 3th party Library>}} 
 for a specific wrapper. The [Managed Extensibility Framework](http://en.wikipedia.org/wiki/Managed_Extensibility_Framework) (MEF) is used to dynamic link some of the external mathematical libraries to the Dodoni.net framework. The following assemblies provides wrapper for specific (native) 3th Party Libraries to enable the use of these Libraries within the Dodoni.net framework:
 
-|| **Assembly** || **Library** ||
-|**[Dodoni.MathLibrary.Native.ACML](Dodoni.MathLibrary.Native.ACML)**| [AMD Core Math Library](http://en.wikipedia.org/wiki/AMD_Core_Math_Library) (ACML) Library|
-|**[Dodoni.MathLibrary.Native.BLAS](Dodoni.MathLibrary.Native.BLAS)**| [BLAS](http://www.netlib.org/blas/) Library (Fortran interface)|
-|**[Dodoni.MathLibrary.Native.CBLAS](Dodoni.MathLibrary.Native.CBLAS)**| C-Interface of the [BLAS](http://www.netlib.org/blas/) Library (CBLAS)|
-|**[Dodoni.MathLibrary.Native.FFTW](Dodoni.MathLibrary.Native.FFTW)**| [FFTW](http://www.fftw.org/) Library|
-|**[Dodoni.MathLibrary.Native.LibM](Dodoni.MathLibrary.Native.LibM)**| [LibM](http://developer.amd.com/tools-and-sdks/cpu-development/libm/), a 64bit software library containing a collection of basic math functions and vector functions|
-|**[Dodoni.MathLibrary.Native.MKL](Dodoni.MathLibrary.Native.MKL)**| [Math Kernel Library](http://en.wikipedia.org/wiki/Math_Kernel_Library) (MKL) Library|
-|**[Dodoni.MathLibrary.Native.NLopt](Dodoni.MathLibrary.Native.NLopt)**| [NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt), a free/open-source library for nonlinear optimization|
-|**[Dodoni.MathLibrary.Native.Yeppp](Dodoni.MathLibrary.Native.Yeppp)**| [Yeppp!](http://www.yeppp.info/),  a high-performance SIMD-optimized mathematical library for x86, ARM, and MIPS processors on Windows, Android, Mac OS X, and GNU/Linux systems|
+**Assembly** | **Library**
+**[Dodoni.MathLibrary.Native.ACML](Dodoni.MathLibrary.Native.ACML)**| [AMD Core Math Library](http://en.wikipedia.org/wiki/AMD_Core_Math_Library) (ACML) Library
+**[Dodoni.MathLibrary.Native.BLAS](Dodoni.MathLibrary.Native.BLAS)**| [BLAS](http://www.netlib.org/blas/) Library (Fortran interface)
+**[Dodoni.MathLibrary.Native.CBLAS](Dodoni.MathLibrary.Native.CBLAS)**| C-Interface of the [BLAS](http://www.netlib.org/blas/) Library (CBLAS)
+**[Dodoni.MathLibrary.Native.FFTW](Dodoni.MathLibrary.Native.FFTW)**| [FFTW](http://www.fftw.org/) Library
+**[Dodoni.MathLibrary.Native.LibM](Dodoni.MathLibrary.Native.LibM)**| [LibM](http://developer.amd.com/tools-and-sdks/cpu-development/libm/), a 64bit software library containing a collection of basic math functions and vector functions
+**[Dodoni.MathLibrary.Native.MKL](Dodoni.MathLibrary.Native.MKL)**| [Math Kernel Library](http://en.wikipedia.org/wiki/Math_Kernel_Library) (MKL) Library
+**[Dodoni.MathLibrary.Native.NLopt](Dodoni.MathLibrary.Native.NLopt)**| [NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt), a free/open-source library for nonlinear optimization
+**[Dodoni.MathLibrary.Native.Yeppp](Dodoni.MathLibrary.Native.Yeppp)**| [Yeppp!](http://www.yeppp.info/),  a high-performance SIMD-optimized mathematical library for x86, ARM, and MIPS processors on Windows, Android, Mac OS X, and GNU/Linux systems
+
  **[Dodoni.CommonMathLibrary](MathLibrary)**: 
 Contains some managed implementation of mathematikcal functions, for example:
 * numerical integration algorithms (for example Gauss-Kronrod-Patterson etc.),
