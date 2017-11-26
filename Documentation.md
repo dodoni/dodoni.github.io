@@ -119,7 +119,7 @@ Copy the XLDodoni.dna file of the distribution of the Dodoni.net project to the 
 Write an individual implementation for the ILogger interface and mark it with the Export attribute of the  Managed Extensibility Framework (MEF), i.e.
 
 ```C#
- [Export(typeof(ILogger))](Export(typeof(ILogger)))
+[Export(typeof(ILogger))]
 ```
 
 Create or modify the configuration file of the Dodoni.net project or of your individual project in the following way; for more information see [BasicComponents](BasicComponents):
