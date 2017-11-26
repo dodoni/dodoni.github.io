@@ -80,51 +80,51 @@ _**... for the Excel Add-In:**_
 **[Dodoni.XLBasicComponents](XLBasicComponents)**: 
 Provide functionality for a generic Excel Add-In, i.e. extends [Excel-DNA](exceldna.codeplex.com) by _high-level_ methods, for example an object pool easy accessible in Excel, property/value Excel range queries etc.
 
-**{{Dodoni.XLIntegration}}**: 
-Serves as Excel Add-In for the Dodoni.net project that provides UDF's (+u+ser +d+efined +f+unctions) for most of the functionality of the Dodoni.net project. The source code is _not yet published_.
+**Dodoni.XLIntegration**: 
+Serves as Excel Add-In for the Dodoni.net project that provides UDF's (user defined functions) for most of the functionality of the Dodoni.net project. The source code is _not yet published_.
 
 ### 5. Further documentation
 * A documentation of the API of the Dodoni.net framework is part of the distribution. 
 * The unit tests of the Dodoni.net project serves as _living documentation_.
 _**... for the Excel Add-In:**_
-* A documentation of the UDF's (+u+ser +d+efined +f+unctions) provided by the Excel Add-In of the Dodoni.net project is still not available, but the distribution contains several example Excel sheets. 
-* _The name of each user defined function (UDF) of the Add-In starts with '{{do}}' which can be interpreted as **do** for doing or as short-name for **Do**doni.net._
+* A documentation of the UDF's (user defined functions) provided by the Excel Add-In of the Dodoni.net project is still not available, but the distribution contains several example Excel sheets. 
+* _The name of each user defined function (UDF) of the Add-In starts with 'do' which can be interpreted as **do** for doing or as short-name for **Do**doni.net._
 {anchor:anchorHowto}
 ### 6. Howto
 * **....write _individual_  Excel Add-Ins with [Excel-DNA](exceldna.codeplex.com) and Dodoni.net?**
 Create a new .net project (at least .NET 4.0). Add references at least to the following assemblies of the distribution of [Excel-DNA](exceldna.codeplex.com) and Dodoni.net: 
-* {{Dodoni.BasicComponents.dll}}, 
-* {{Dodoni.XLBasicComponents.dll}}, 
-* {{ExcelDna.Integration.dll}}.
-Copy the 32- or 64-bit {{XLL}} file of [Excel-DNA](exceldna.codeplex.com) to the directory of the binaries of your .net project and store it under a file name of your choice. Create a text file with the same file name and suffix {{.dna}} with the following content:
+* Dodoni.BasicComponents.dll, 
+* Dodoni.XLBasicComponents.dll, 
+* ExcelDna.Integration.dll.
+Copy the 32- or 64-bit XLL file of [Excel-DNA](exceldna.codeplex.com) to the directory of the binaries of your .net project and store it under a file name of your choice. Create a text file with the same file name and suffix .dna with the following content:
 
-{code:xml}
+```xml
 <DnaLibrary RuntimeVersion="v4.0">
   <ExternalLibrary Path="Dodoni.XLBasicComponents.dll" ExplicitExports="true" Pack="true"/>
   <ExternalLibrary Path="NameOfYourProject.dll" ExplicitExports="true" Pack="true"/>
   <Reference AssemblyPath="Dodoni.BasicComponents.dll" Pack="true"/>
 </DnaLibrary>
-{code:xml}
+```
 
-Of course the above file represents the simplest case only (the entry {{Pack="true"}} is optional). If necessary one has to add further references in the {{.dna}} file. One may have a deeper look in the documentation of the [Excel-DNA](exceldna.codeplex.com) project. For the features of the [Dodoni.XLBasicComponents](XLBasicComponents) assembly we refer to the documentation of the Dodoni.net API. Moreover the distribution contains a simple example project in the repository.
+Of course the above file represents the simplest case only (the entry Pack="true" is optional). If necessary one has to add further references in the .dna file. One may have a deeper look in the documentation of the [Excel-DNA](exceldna.codeplex.com) project. For the features of the [Dodoni.XLBasicComponents](XLBasicComponents) assembly we refer to the documentation of the Dodoni.net API. Moreover the distribution contains a simple example project in the repository.
 
 * **...extend the Excel Add-In of the Dodoni.net project?**
 If you like to add further UDF (user defined functions) to the Excel Add-In it is not recommended to extend or modify the {{Dodoni.XLIntegration}} assembly. Instead, create a new .net project (at least .NET 4.0) and add references to {{ExcelDna.Integration.dll}} of the distribution of [Excel-DNA](exceldna.codeplex.com) and to the required assemblies of the Dodoni.net project, i.e. _at least_
-* {{Dodoni.BasicComponents.dll}}, 
-* {{Dodoni.XLBasicComponents.dll}}, 
-* {{Dodoni.XLIntegration.dll}}.
-Copy the {{XLDodoni.dna}} file of the distribution of the Dodoni.net project to the directory of the binaries of your .net project and store it under a file name of your choice. Modify the {{.dna}} file in a way that it refers to your .net project as well. Copy the 32- or 64-bit {{XLL}} file of [Excel-DNA](exceldna.codeplex.com) to the same directory and store it under the same name as the {{.dna}} file. This {{XLL}} should make available your individual UDF's.
+* Dodoni.BasicComponents.dll, 
+* Dodoni.XLBasicComponents.dll, 
+* Dodoni.XLIntegration.dll.
+Copy the XLDodoni.dna file of the distribution of the Dodoni.net project to the directory of the binaries of your .net project and store it under a file name of your choice. Modify the .dna file in a way that it refers to your .net project as well. Copy the 32- or 64-bit XLL file of [Excel-DNA](exceldna.codeplex.com) to the same directory and store it under the same name as the .dna file. This XLL should make available your individual UDF's.
 
 * **...use a specific logging?**
-Write an individual implementation for the {{ILogger}} interface and mark it with the {{Export}} attribute of the  Managed Extensibility Framework (MEF), i.e.
+Write an individual implementation for the ILogger interface and mark it with the Export attribute of the  Managed Extensibility Framework (MEF), i.e.
 
-{code:c#}
+```C#
  [Export(typeof(ILogger))](Export(typeof(ILogger)))
-{code:c#}
+```
 
 Create or modify the configuration file of the Dodoni.net project or of your individual project in the following way; for more information see [BasicComponents](BasicComponents):
 
-{code:xml}
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <configSections>
@@ -132,12 +132,11 @@ Create or modify the configuration file of the Dodoni.net project or of your ind
   </configSections>
   <LoggingSetting typeName="YourNamespace.YourClass, YourAssemblyName" />
 </configuration>
-{code:xml}
+```
 
 * **...create an individual user interface with a separate implementation for Holiday calendar, business day conventions etc.? For example how to link the Dodoni.net framework to a trading system?**
 Perhaps instead of the Excel Add-In you may use functionality of the Dodoni.net library in a different program, for example a trading system. In this case you should ignore the assemblies of the Dodoni.net framework which are connected to the Excel Add-In, i.e. 
-* {{Dodoni.XLBasicComponents.dll}} and 
-* {{Dodoni.XLIntegration.dll}}. 
-In general a trading system already contains implementations for Holiday calendar, business day conventions etc. Therefore you should replace {{Dodoni.FinanceCommonMarketUsages}} by a new assembly that wraps these functions and structures to the infastructure of Dodoni.net.
+* Dodoni.XLBasicComponents.dll and 
+* Dodoni.XLIntegration.dll. 
 
-
+In general a trading system already contains implementations for Holiday calendar, business day conventions etc. Therefore you should replace Dodoni.FinanceCommonMarketUsages by a new assembly that wraps these functions and structures to the infastructure of Dodoni.net.
