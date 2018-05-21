@@ -1,4 +1,4 @@
-## {{Dodoni.BasicComponents}}
+﻿## `Dodoni.BasicComponents`
 
 #### 1. Overview
 This assembly contains basic classes and methods needed for the Dodoni.net project. This assembly provide general stuff which is not directly related to mathematical problems, mathematical finance, Excel interface etc.

@@ -31,10 +31,10 @@ Some assemblies contains _unsafe_ code (for native code wrapper), thus the libra
 The Excel interface is based on the [Excel-DNA](https://excel-dna.net) project, an intuitive open source .NET library for using .NET functions in Excel, designed by Govert van Drimmelen. The Add-In has been tested with
 * Microsoft Excel 2007 and Excel 2010 (32- and 64 bit).
 
-It should work with other MS Excel versions as well. Macro running must be enable, at least for the {{.XLL}} file of the Dodoni.net Add-In, change the security level if required. Moreover one should have the right to change (configuration) files in the specified directory. 
+It should work with other MS Excel versions as well. Macro running must be enable, at least for the `.XLL` file of the Dodoni.net Add-In, change the security level if required. Moreover one should have the right to change (configuration) files in the specified directory. 
 
 ## 3. Installation
-The Dodoni.net library is avaiable in the [NuGet Gallery](https://www.nuget.org). Moreover you can download an Excel-AddIn, i.e. a {{.XLL}} file. The Excel Add-In does not support 
+The Dodoni.net library is avaiable in the [NuGet Gallery](https://www.nuget.org). Moreover you can download an Excel-AddIn, i.e. a `.XLL` file. The Excel Add-In does not support 
 all features of the Dodoni.net framework. 
 
 The complete feature set of Dodoni.net requires external (native) libraries for
@@ -70,6 +70,7 @@ This enables to incorporate the functionality of 3th party mathematical librarie
 [NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt), [Yeppp!](http://www.yeppp.info/) etc. 
 See 
 > Dodoni.MathLibary.Native.<Name of 3th party Library>
+
 for a specific wrapper. 
 
 The [Managed Extensibility Framework](http://en.wikipedia.org/wiki/Managed_Extensibility_Framework) (MEF) is used to dynamic link some of the external mathematical 
@@ -90,7 +91,7 @@ libraries to the Dodoni.net framework. The following subprojects (assemblies) pr
 Contains some managed implementation of mathematikcal functions, for example:
 * numerical integration algorithms (for example Gauss-Kronrod-Patterson etc.),
 * some curve/surface interpolation approaches,
-* some [Special functions](http://en.wikipedia.org/wiki/List_of_mathematical_functions) (for example {{erf(x), erfc(x), LambertW(x)}} etc.),
+* some [Special functions](http://en.wikipedia.org/wiki/List_of_mathematical_functions) (for example `erf(x), erfc(x), LambertW(x)` etc.),
 * some 1-/n-dimensional optimization algorithm (Brent, Powell, PRAXIS etc.) etc.
 
 **[Dodoni.FinanceBasics](FinanceBasics)**: 
@@ -108,20 +109,24 @@ Provide functionality for a generic Excel Add-In, i.e. extends [Excel-DNA](excel
 **Dodoni.XLIntegration**: 
 Serves as Excel Add-In for the Dodoni.net project that provides UDF's (user defined functions) for most of the functionality of the Dodoni.net project. The source code is _not yet published_.
 
-### 5. Further documentation
+## 5. Further documentation
 * A documentation of the API of the Dodoni.net framework is part of the distribution. 
 * The unit tests of the Dodoni.net project serves as _living documentation_.
+
 _**... for the Excel Add-In:**_
 * A documentation of the UDF's (user defined functions) provided by the Excel Add-In of the Dodoni.net project is still not available, but the distribution contains several example Excel sheets. 
 * _The name of each user defined function (UDF) of the Add-In starts with 'do' which can be interpreted as **do** for doing or as short-name for **Do**doni.net._
-{anchor:anchorHowto}
-### 6. Howto
+
+## 6. Howto
 * **....write _individual_  Excel Add-Ins with [Excel-DNA](exceldna.codeplex.com) and Dodoni.net?**
+
 Create a new .net project (at least .NET 4.0). Add references at least to the following assemblies of the distribution of [Excel-DNA](exceldna.codeplex.com) and Dodoni.net: 
 * Dodoni.BasicComponents.dll, 
 * Dodoni.XLBasicComponents.dll, 
 * ExcelDna.Integration.dll.
-Copy the 32- or 64-bit XLL file of [Excel-DNA](exceldna.codeplex.com) to the directory of the binaries of your .net project and store it under a file name of your choice. Create a text file with the same file name and suffix .dna with the following content:
+
+Copy the 32- or 64-bit XLL file of [Excel-DNA](https://excel-dna.net) to the directory of the binaries of your .net project and store it under 
+a file name of your choice. Create a text file with the same file name and suffix .dna with the following content:
 
 ```xml
 <DnaLibrary RuntimeVersion="v4.0">
@@ -131,10 +136,13 @@ Copy the 32- or 64-bit XLL file of [Excel-DNA](exceldna.codeplex.com) to the dir
 </DnaLibrary>
 ```
 
-Of course the above file represents the simplest case only (the entry Pack="true" is optional). If necessary one has to add further references in the .dna file. One may have a deeper look in the documentation of the [Excel-DNA](exceldna.codeplex.com) project. For the features of the [Dodoni.XLBasicComponents](XLBasicComponents) assembly we refer to the documentation of the Dodoni.net API. Moreover the distribution contains a simple example project in the repository.
+Of course the above file represents the simplest case only (the entry Pack="true" is optional). If necessary one has to add further references in the .dna file. 
+One may have a deeper look in the documentation of the [Excel-DNA](https://excel-dna.net) project. 
+For the features of the [Dodoni.XLBasicComponents](XLBasicComponents) assembly we refer to the documentation of the Dodoni.net API. Moreover the distribution contains a simple example project in the repository.
 
 * **...extend the Excel Add-In of the Dodoni.net project?**
-If you like to add further UDF (user defined functions) to the Excel Add-In it is not recommended to extend or modify the {{Dodoni.XLIntegration}} assembly. Instead, create a new .net project (at least .NET 4.0) and add references to {{ExcelDna.Integration.dll}} of the distribution of [Excel-DNA](exceldna.codeplex.com) and to the required assemblies of the Dodoni.net project, i.e. _at least_
+
+If you like to add further UDF (user defined functions) to the Excel Add-In it is not recommended to extend or modify the `Dodoni.XLIntegration` assembly. Instead, create a new .net project (at least .NET 4.0) and add references to `ExcelDna.Integration.dll` of the distribution of [Excel-DNA](exceldna.codeplex.com) and to the required assemblies of the Dodoni.net project, i.e. _at least_
 * Dodoni.BasicComponents.dll, 
 * Dodoni.XLBasicComponents.dll, 
 * Dodoni.XLIntegration.dll.
@@ -159,7 +167,9 @@ Create or modify the configuration file of the Dodoni.net project or of your ind
 </configuration>
 ```
 
-* **...create an individual user interface with a separate implementation for Holiday calendar, business day conventions etc.? For example how to link the Dodoni.net framework to a trading system?**
+* **...create an individual user interface with a separate implementation for Holiday calendar, business day conventions etc.? For example how to link the Dodoni.net 
+framework to a trading system?**
+
 Perhaps instead of the Excel Add-In you may use functionality of the Dodoni.net library in a different program, for example a trading system. In this case you should ignore the assemblies of the Dodoni.net framework which are connected to the Excel Add-In, i.e. 
 * Dodoni.XLBasicComponents.dll and 
 * Dodoni.XLIntegration.dll. 
