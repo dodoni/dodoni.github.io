@@ -1,5 +1,9 @@
 ## Release notes
 
+**1.0.0 preview 9** (xx.xx.2018)
+* migration of code and documentation from codeplex.com to github.com
+* use .net 4.5 or higher
+
 **1.0.0 preview 8** (01.07.2015)
 
 * Dodoni.BasicMathLibrary: (stable, release candidate)

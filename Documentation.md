@@ -1,26 +1,37 @@
-### 1. Introduction
-**Dodoni.net** is a free/open-source library with the aim to provide a object-oriented framework for 
-* numerical computations, i.e. Linear Algebra operations, Numerical Integration, Fast-Fourier-Transformation, 1-/n-dimensional Optimization, curve/surface fitting, special functions etc. 
+## 1. Introduction
+**Dodoni.net** is a free/open-source library with the aim to provide an object-oriented framework for 
+* numerical computations, i.e. Linear Algebra operations, Numerical Integration, Fast-Fourier-Transformation, 1-/n-dimensional Optimization, 
+curve/surface fitting, special functions etc. 
 * quantitative finance (pricing and risk management).
-The Excel interface of Dodoni.net contains a part that can be seen as a high-level extension of the [Excel-DNA library](http://exceldna.codeplex.com), i.e. it serves as building block for individual Excel Add-In's.
+* actuarial science.
 
-* The Dodoni.net runtime is free for all use, and distributed under a permissive open-source [license](http://dodoni.codeplex.com/license) that also allows commercial use. 
+Moreover the Excel interface of Dodoni.net contains a part that serves as a high-level extension of [Excel-DNA](https://excel-dna.net), 
+i.e. it can be used as building block for individual Excel Add-In's independent of other features of Dodoni.net.
+
+* Dodoni.net is free for all use, and distributed under a permissive open-source [license](LICENSE) that also allows commercial use. 
 * The project [Roadmap](Roadmap) provide an overview of progress made towards releasing a version. 
+
 **[Release notes](ReleaseNotes)**
 
-### 2. Preliminaries
+## 2. Preliminaries
 As the name indicates, the Dodoni.net library requires
 * Microsoft .NET framework, at least .NET 4.0.
+
 Moreover, the operation system should be
 * Windows XP, Windows Vista or Windows 7 etc. (32- or 64 bit).
-Perhaps the framework works under [Mono](http://www.mono-project.com/) in an Linux environment as well, but it is not tested yet. The complete feature set of Dodoni.net requires external libraries for [BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/), Random Number Generators, Fast-Fourier-Transformations (FFT) etc. Some assemblies contains _unsafe_ code (for native code wrapper), thus the library must run in a full trust environment; in general this is no restriction at all.
+
+Perhaps the framework works under [Mono](http://www.mono-project.com/) in an Linux environment as well, but it is not tested yet. The complete 
+feature set of Dodoni.net requires external libraries for [BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/), 
+Random Number Generators, Fast-Fourier-Transformations (FFT) etc. 
+Some assemblies contains _unsafe_ code (for native code wrapper), thus the library must run in a full trust environment; in general this is no restriction at all.
 
 **... for the Excel Add-In:**
-The Excel interface is based on the [Excel-DNA](http://exceldna.codeplex.com) project, an intuitive open source .NET library for using .NET functions in Excel, designed by Govert van Drimmelen. The Add-In has been tested with
+The Excel interface is based on the [Excel-DNA](https://excel-dna.net) project, an intuitive open source .NET library for using .NET functions in Excel, designed by Govert van Drimmelen. The Add-In has been tested with
 * Microsoft Excel 2007 and Excel 2010 (32- and 64 bit).
+
 It should work with other MS Excel versions as well. Macro running must be enable, at least for the {{.XLL}} file of the Dodoni.net Add-In, change the security level if required. Moreover one should have the right to change (configuration) files in the specified directory. 
 
-### 3. Installation
+## 3. Installation
 The distribution of the Dodoni.net project contains a {{.XLL}} file and several {{.dll}} files. One can use the {{.XLL}} file directly in Microsoft Excel. One may change the configuration of the Add-In in the corresponding menu entry (Ribbon). Furthermore the dll's of the Dodoni.net project can be imported into your individual project. The Excel Add-In does not support all features of the Dodoni.net framework.
 
 The complete feature set of Dodoni.net requires external (native) libraries for
@@ -30,7 +41,7 @@ The complete feature set of Dodoni.net requires external (native) libraries for
 * Fast-Fourier-Transformations (FFT), optimizer etc. 
 which are not part of the distribution (some managed code is available as fallback implementation). If these features are used one has to copy the corresponding libraries (dll's) into the specified binary folder. The configuration of the Excel-AddIn shows the corresponding file names etc., see also [Dodoni.BasicMathLibrary](Documentation#anchorBasicMathLibrary) etc.
 
-### 4. Structure of the framework
+## 4. Structure of the framework
 The source code, thus the binaries as well, of the Dodoni.net framework are separated into several assemblies, i.e. dll's. Each assembly is related to a specific purpose. The Dodoni.net project consist of the following assemblies:
  
  **[Dodoni.BasicComponents](BasicComponents)**: 
