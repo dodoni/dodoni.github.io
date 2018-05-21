@@ -1,4 +1,4 @@
-## {{Dodoni.FinanceBasics}}
+## `Dodoni.FinanceBasics`
 
 #### 1. Overview
 Provides interfaces for day count conventions, business day conventions, holiday calendars, Market convention templates etc. Moreover it contains some Tenor arithmetic, Compounding rules, date factory etc. as well as an implementation of the Black-Scholes and the Bachelier (=normal Black) model etc. This assembly does not contain market instruments or specific models.

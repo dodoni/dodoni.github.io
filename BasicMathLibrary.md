@@ -1,4 +1,4 @@
-## {{Dodoni.BasicMathLibrary}}
+## `Dodoni.BasicMathLibrary`
 
 #### 1. Overview
 Provides _mainly the infrastructure_ and some basic implementations for mathematical operations, for example:

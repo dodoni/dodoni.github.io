@@ -1,4 +1,4 @@
-## {{Dodoni.MathLibrary.Native.ACML}}
+## `Dodoni.MathLibrary.Native.ACML`
 
 #### 1. Overview
 Provides wrapper for the [Core Math Library (ACML)](http://developer.amd.com/tools-and-sdks/cpu-development/amd-core-math-library-acml/), a library that provides a free set of thoroughly optimized and threaded math routines for HPC, scientific, engineering and related compute-intensive applications. The main native dll of the ACML Library should be renamed to {{libACML.dll}} to ensure that it can be found by {{Dodoni.MathLibrary.Native.ACML}}.

@@ -1,4 +1,4 @@
-## {{Dodoni.MathLibrary.Native.Yeppp}}
+## `Dodoni.MathLibrary.Native.Yeppp`
 
 #### 1. Overview
 Provides wrapper for [Yeppp!](http://www.yeppp.info/),  a high-performance SIMD-optimized mathematical library for x86, ARM, and MIPS processors on Windows, Android, Mac OS X, and GNU/Linux systems.
