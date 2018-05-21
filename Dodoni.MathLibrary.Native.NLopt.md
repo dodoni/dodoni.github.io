@@ -26,9 +26,9 @@ Therefore you will find for almost all function of the API of the [NLopt library
  ptr.TrySetAbsoluteXTolerance(1E-6);
  ptr.TrySetRelativeXTolerance(1E-6);
 
- ptr.SetFunction((n, x, gradient, data) => { return x[0](0)(0) * x[0](0)(0) + x[1](1)(1) * x[1](1)(1) + 1.123; });
+ ptr.SetFunction((n, x, gradient, data) => { return x[0] * x[0] + x[1] * x[1] + 1.123; });
 
- var argMin = new double[2](2) { 1.0, 4.8 };
+ var argMin = new double[2]{ 1.0, 4.8 };
  double minimum; // expected: 1.123
  var errorCode = ptr.FindMinimum(argMin, out minimum);
 ```
@@ -45,14 +45,14 @@ Therefore one has to apply the specific factory for it. The following code snipp
  var cobyla = new NLoptMultiDimOptimizer(NLoptAlgorithm.LN_COBYLA);
  var nloptBoxConstraint = cobyla.Constraint.Create(
                            MultiDimRegion.Interval.Create(dimension: 2, 
-                           lowerBounds: new[]() { 1.0, 5.0 }, 
-                           upperBounds: new[]() { 12.4, 34.2 }));
+                           lowerBounds: new[]{ 1.0, 5.0 }, 
+                           upperBounds: new[]{ 12.4, 34.2 }));
 
  var alg = cobyla.Create(nloptBoxConstraint);
- alg.Function = cobyla.Function.Create(2,x => x[0](0)(0)**x[0](0)(0) + x[1](1)(1)**x[1](1)(1) + 1.123);
-// alternative: alg.SetFunction(x => x[0](0)(0)**x[0](0)(0) + x[1](1)(1)**x[1](1)(1) + 1.123);
+ alg.Function = cobyla.Function.Create(2,x => x[0]*x[0] + x[1]*x[1] + 1.123);
+// alternative: alg.SetFunction(x => x[0]*x[0] + x[1]*x[1] + 1.123);
 
- var argMin = new []() { 1.4, 5.8 };
+ var argMin = new []{ 1.4, 5.8 };
  double minimum;
  var errorCode = alg.FindMinimum(argMin, out minimum);
 ```
@@ -64,7 +64,7 @@ set initial step size etc.
 
 ``` csharp
  var cobyla = new NLoptMultiDimOptimizer(NLoptAlgorithm.LN_COBYLA,
-      nloptPtr => {nloptPtr.SetInitialStepSize(new [](){1.0, 2.0}} );
+      nloptPtr => {nloptPtr.SetInitialStepSize(new []{1.0, 2.0}} );
 ```
 
 **Keep in mind** that the lambda expression will be evaluated in the `Create` method of `NLoptMultiDimOptimizer`, in particular the dimension of the 
