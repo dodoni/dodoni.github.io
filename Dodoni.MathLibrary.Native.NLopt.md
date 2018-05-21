@@ -11,14 +11,14 @@ This assembly depends on
 * [Dodoni.BasicMathLibrary](BasicMathLibrary)
 
 #### 3. Main concepts and helpful code snippets
-One may have a look in the unit test project of {{Dodoni.MathLibrary.Native.NLopt}}; see API documentation for more information.
+One may have a look in the unit test project of `Dodoni.MathLibrary.Native.NLopt`; see API documentation for more information.
 
  **NLoptPtr**
 
 The class `NLoptPtr` serves as wrapper for the internal opaque pointer of the algorithm of the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt). 
 Therefore you will find for almost all function of the API of the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt) a counterpart in this class. 
 
-```C#
+``` csharp
  NLoptPtr ptr = new NLoptPtr(NLoptAlgorithm.LN_PRAXIS, 2);
 
  ptr.TrySetAbsoluteFValueTolerance(1E-6);
@@ -41,7 +41,7 @@ Therefore one first create a specific `(NLopt)MultiDimOptimizer` object.
 Constraints and the representation of the objective function are specific for the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt). 
 Therefore one has to apply the specific factory for it. The following code snippet shows a simple example.
 
-```C#
+``` csharp
  var cobyla = new NLoptMultiDimOptimizer(NLoptAlgorithm.LN_COBYLA);
  var nloptBoxConstraint = cobyla.Constraint.Create(
                            MultiDimRegion.Interval.Create(dimension: 2, 
