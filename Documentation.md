@@ -95,7 +95,10 @@ Contains some managed implementation of mathematikcal functions, for example:
 * some 1-/n-dimensional optimization algorithm (Brent, Powell, PRAXIS etc.) etc.
 
 **[Dodoni.FinanceBasics](FinanceBasics)**: 
-Provides _interfaces_ for day count conventions, business day conventions, holiday calendars, Market convention templates etc. Moreover it contains some Tenor arithmetic, Compounding rules, date factory etc. as well as an implementation of the Black-Scholes and the Bachelier (=normal Black) model etc. It does not contain an engine for pricing or risk management for financal instruments etc. This is located in a separate assembly.
+Provides _interfaces_ for day count conventions, business day conventions, holiday calendars, Market convention templates etc. 
+
+Moreover it contains some Tenor arithmetic, Compounding rules, date factory etc. as well as an implementation of the Black-Scholes and the Bachelier (=normal Black) model etc. 
+It does not contain an engine for pricing or risk management for financal instruments etc. This is located in a separate assembly.
 
 
 **[Dodoni.FinanceCommonMarketUsages](FinanceCommonMarketUsages)**: 

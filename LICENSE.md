@@ -1,3 +1,5 @@
+## License
+
 Copyright (c) 2011-2018 Markus Wendt
 
 This software is provided 'as-is', without any express or implied warranty. In no event will
