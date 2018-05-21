@@ -18,7 +18,7 @@ which can be interpreted as **C** (for the language C#) as well.
 #### General
 Dodoni.net is developed using .NET. The complete feature set of Dodoni.net requires external libraries for 
 [BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/), Random Number Generators, 
-Fast-Fourier-Transformations etc. See [Documentation](Documentation) for further information.
+Fast-Fourier-Transformations etc. See [Documentation](Documentation) for further details.
 
 * One useful by-product of the Dodoni.net project is a high-level extension of [Excel-DNA](https://excel-dna.net) which allowes 
 the development of Excel-AddIns. 

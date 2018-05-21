@@ -20,7 +20,9 @@ As the name indicates, the Dodoni.net library requires
 Moreover, the operation system should be
 * Windows XP, Windows Vista or Windows 7 etc. (32- or 64 bit).
 
-Perhaps the framework works under [Mono](http://www.mono-project.com/) in an Linux environment as well, but it is not tested yet. The complete 
+Perhaps the framework works under [Mono](http://www.mono-project.com/) in an Linux environment as well, but it is not tested yet. 
+
+The complete 
 feature set of Dodoni.net requires external libraries for [BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/), 
 Random Number Generators, Fast-Fourier-Transformations (FFT) etc. 
 Some assemblies contains _unsafe_ code (for native code wrapper), thus the library must run in a full trust environment; in general this is no restriction at all.
@@ -32,21 +34,26 @@ The Excel interface is based on the [Excel-DNA](https://excel-dna.net) project, 
 It should work with other MS Excel versions as well. Macro running must be enable, at least for the {{.XLL}} file of the Dodoni.net Add-In, change the security level if required. Moreover one should have the right to change (configuration) files in the specified directory. 
 
 ## 3. Installation
-The distribution of the Dodoni.net project contains a {{.XLL}} file and several {{.dll}} files. One can use the {{.XLL}} file directly in Microsoft Excel. One may change the configuration of the Add-In in the corresponding menu entry (Ribbon). Furthermore the dll's of the Dodoni.net project can be imported into your individual project. The Excel Add-In does not support all features of the Dodoni.net framework.
+The Dodoni.net library is avaiable in the [NuGet Gallery](https://www.nuget.org). Moreover you can download an Excel-AddIn, i.e. a {{.XLL}} file. The Excel Add-In does not support 
+all features of the Dodoni.net framework. 
 
 The complete feature set of Dodoni.net requires external (native) libraries for
 * [BLAS](http://www.netlib.org/blas/), 
 * [LAPACK](http://www.netlib.org/lapack/), 
 * Random Number Generators, 
 * Fast-Fourier-Transformations (FFT), optimizer etc. 
-which are not part of the distribution (some managed code is available as fallback implementation). If these features are used one has to copy the corresponding libraries (dll's) into the specified binary folder. The configuration of the Excel-AddIn shows the corresponding file names etc., see also [Dodoni.BasicMathLibrary](Documentation#anchorBasicMathLibrary) etc.
+
+which are not part of the distribution (some managed code is available as fallback implementation). If these features are used one has to copy the corresponding 
+libraries (dll's) into the specified binary folder. 
+The configuration of the Excel-AddIn shows the corresponding file names etc., see also [Dodoni.BasicMathLibrary](BasicMathLibrary) etc.
 
 ## 4. Structure of the framework
-The source code, thus the binaries as well, of the Dodoni.net framework are separated into several assemblies, i.e. dll's. Each assembly is related to a specific purpose. The Dodoni.net project consist of the following assemblies:
+The Dodoni.net project is divided into several subprojects. Each subproject ob Dodoni.net is related to a specific purpose:
  
  **[Dodoni.BasicComponents](BasicComponents)**: 
-Contains basic classes and methods needed for the project. This assembly provide general stuff which is _not_ directly related to mathematical problems, mathematical finance, Excel interface etc., for example a logfile framework and methods for configuration files etc.
-{anchor:anchorBasicMathLibrary}
+Contains basic classes and methods needed for the project. This assembly provide general stuff which is _not_ directly related to mathematical problems, 
+mathematical finance, Excel interface etc., for example a logfile framework and methods for configuration files etc.
+
  **[Dodoni.BasicMathLibrary](BasicMathLibrary)**: 
 Provides _mainly the infrastructure_ and some basic implementations for mathematical operations, for example:
 * [BLAS](http://www.netlib.org/blas/) library (interface structure + a managed fallback implementation), 
@@ -57,9 +64,16 @@ Provides _mainly the infrastructure_ and some basic implementations for mathemat
 * interfaces for interpolation and parametrization of curves and surfaces with some basic implementations (linear, spline etc.)
 * interfaces for numerical integration, Random Number Generators, Optimization etc.
 * implementation for root finding algorithms for polynomials etc.
-This enables to incorporate the functionality of 3th party mathematical libraries, as for example [Math Kernel Library](http://en.wikipedia.org/wiki/Math_Kernel_Library) (MKL), [AMD Core Math Library](http://en.wikipedia.org/wiki/AMD_Core_Math_Library) (ACML), [Fastest Fourier Transform in the West](http://www.fftw.org/) (FFTW), [NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt), [Yeppp!](http://www.yeppp.info/) etc. See namespace 
-:: {{Dodoni.MathLibary.Native.<Name of 3th party Library>}} 
-for a specific wrapper. The [Managed Extensibility Framework](http://en.wikipedia.org/wiki/Managed_Extensibility_Framework) (MEF) is used to dynamic link some of the external mathematical libraries to the Dodoni.net framework. The following assemblies provides wrapper for specific (native) 3th Party Libraries to enable the use of these Libraries within the Dodoni.net framework:
+
+This enables to incorporate the functionality of 3th party mathematical libraries, as for example [Math Kernel Library](http://en.wikipedia.org/wiki/Math_Kernel_Library) (MKL), 
+[AMD Core Math Library](http://en.wikipedia.org/wiki/AMD_Core_Math_Library) (ACML), [Fastest Fourier Transform in the West](http://www.fftw.org/) (FFTW), 
+[NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt), [Yeppp!](http://www.yeppp.info/) etc. 
+See 
+> Dodoni.MathLibary.Native.<Name of 3th party Library>
+for a specific wrapper. 
+
+The [Managed Extensibility Framework](http://en.wikipedia.org/wiki/Managed_Extensibility_Framework) (MEF) is used to dynamic link some of the external mathematical 
+libraries to the Dodoni.net framework. The following subprojects (assemblies) provides wrapper for specific (native) 3th Party Libraries to enable the use of these Libraries within the Dodoni.net framework:
 
 **Assembly** | **Library**
 -------------|------------
