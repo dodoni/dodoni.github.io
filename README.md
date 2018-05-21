@@ -1,13 +1,14 @@
-### Project Description
+## Project Description
 **Dodoni.net** is a free/open-source library with the aim to provide a object-oriented framework for 
 * numerical computations, i.e. Linear Algebra operations, Numerical Integration, Fast-Fourier-Transformation, 1-/n-dimensional Optimization, 
 curve/surface fitting, special functions etc. 
 * quantitative finance (pricing and risk management).
+* actuarial science.
 
-The Excel interface of Dodoni.net contains a part that can be seen as a high-level extension of the [Excel-DNA library](https://excel-dna.net), 
-i.e. it serves as building block for individual Excel Add-In's.
+Moreover the Excel interface of Dodoni.net contains a part that serves as a high-level extension of [Excel-DNA library](https://excel-dna.net), 
+i.e. it can be used as building block for individual Excel Add-In's independent of other features of Dodoni.net.
 
-### Introduction
+## Introduction
 #### The logo and project name
 The name _Dodoni_ (also written _Dodona_) goes back to the oracle situated in northwestern Greece of the same name. The shrine of Dodona was regarded as the oldest Hellenic oracle, see [ http://en.wikipedia.org/wiki/Dodona]( http://en.wikipedia.org/wiki/Dodona). 
 Priestesses and priests in the sacred grove interpreted the rustling of the oak (or beech) leaves to determine the correct actions to be taken. 
@@ -21,7 +22,7 @@ One useful by-product of the Dodoni.net project is a high-level extension of the
 The complete feature set of Dodoni.net requires external libraries for [BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/), 
 Random Number Generators, Fast-Fourier-Transformations etc. See [Documentation](Documentation) for further information.
 
-* The Dodoni.net runtime is free for all use, and distributed under a permissive open-source [license](license) that also allows commercial use.
+* The Dodoni.net runtime is free for all use, and distributed under a permissive open-source [license](LICENSE) that also allows commercial use.
 
 #### Schedule/Roadmap
 The source code (as well as the binaries) of the Dodoni.net project is separated into several assemblies (i.e. dll's). Each assembly is related to a specific purpose. See [Documentation](Documentation) for further information. It is planned to establish the Dodoni.net project in several steps, starting from a generic Excel Add-In to (financial) mathematical functions, supply finance market instruments etc.:
@@ -37,7 +38,7 @@ For the following third-party libraries some functionality is provided (as a .ne
 * [AMD Core Math Library (ACML)](http://en.wikipedia.org/wiki/AMD_Core_Math_Library)  (1-dimensional Fourier Transformation, Random Number Generators etc.).
 * [NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt) is a free/open-source library for nonlinear optimization.
 * [LibM](https://developer.amd.com/amd-cpu-libraries/amd-math-library-libm/) (from AMD) is a 64bit  software library containing a collection of basic math functions and vector functions.
-* [Yeppp!](http://www.yeppp.info) is a high-performance SIMD-optimized mathematical library for x86, ARM, and MIPS processors on Windows, Android, Mac OS X, and GNU/Linux systems.
+* [Yeppp!](https://bitbucket.org/MDukhan/yeppp) is a high-performance SIMD-optimized mathematical library for x86, ARM, and MIPS processors on Windows, Android, Mac OS X, and GNU/Linux systems.
 
 ### Related Projects
 **... for User interface:**
