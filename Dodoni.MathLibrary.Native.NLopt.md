@@ -62,7 +62,7 @@ No problem, the constructors of `NLoptMultiDimOptimizer` provides an optional ar
 will be applied to the internal `NLoptPtr` object. Therefore one can apply lambda calculus, for example to establish a local optimizer, 
 set initial step size etc. 
 
-```C#
+``` csharp
  var cobyla = new NLoptMultiDimOptimizer(NLoptAlgorithm.LN_COBYLA,
       nloptPtr => {nloptPtr.SetInitialStepSize(new [](){1.0, 2.0}} );
 ```
@@ -75,7 +75,7 @@ a property with the specific dimension.
 If you need additional information of a specific NLopt algorithm, i.e. whether it is a local/global approach, required gradient etc. you 
 can use the `Configuration` property of `NLoptMultiDimOptimizer`. Moreover you can create such a configuration separately, for example via
 
-```C#
+``` csharp
  var config = NLoptConfiguration.Create(NLoptAlgorithm.LN_COBYLA);
 ```
 
