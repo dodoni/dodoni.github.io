@@ -1,4 +1,5 @@
 ## License
+zlib license with Acknowledgement
 
 Copyright (c) 2011-2018 Markus Wendt
 
