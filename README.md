@@ -18,17 +18,17 @@ which can be interpreted as **C** (for the language C#) as well.
 #### General
 Dodoni.net is developed using .NET. The complete feature set of Dodoni.net requires external libraries for 
 [BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/), Random Number Generators, 
-Fast-Fourier-Transformations etc. See [Documentation](Documentation) for further details.
+Fast-Fourier-Transformations etc. See [Documentation](Documentation.md) for further details.
 
 * One useful by-product of the Dodoni.net project is a high-level extension of [Excel-DNA](https://excel-dna.net) which allowes 
 the development of Excel-AddIns. 
-* Dodoni.net is free for all use, and distributed under a permissive open-source [license](LICENSE) that also allows commercial use.
+* Dodoni.net is free for all use, and distributed under [MIT license](LICENSE) that also allows commercial use.
 
 #### Schedule/Roadmap
 The Dodoni.net project is divided into several subprojects, each subproject is related to a specific purpose, see 
-[Documentation](Documentation) for further details. 
-* [Roadmap](Roadmap),
-* [Release notes](ReleaseNotes).
+[Documentation](Documentation.md) for further details. 
+* [Roadmap](Roadmap.md),
+* [Release notes](ReleaseNotes.md).
 
 #### Third-party libraries
 For the following third-party libraries some functionality is provided (as a .net wrapper) by the Dodoni.net project:

@@ -1,8 +1,18 @@
 ## Release notes
 
-**1.0.0 preview 9** (xx.xx.2018)
-* migration of code and documentation from codeplex.com to github.com
-* use .net 4.5 or higher
+** 01.xx.2019: 0.1
+
+After a long period of inactivity the Dodoni.net project was relaunched.
+
+* Migration of code and documentation from codeplex.com to github.com 
+* Change license to MIT license
+* Most of the assemblies are now based on .net Standard.
+* change versioning scheme
+* The wrapper for the following libraries has been migrated, but:
+  - Yeppp!: last change on https://bitbucket.org/MDukhan/yeppp was 2016, official homepage is down.
+  - LibM: is still active on https://developer.amd.com/amd-cpu-libraries/amd-math-library-libm/, but available for Ubuntu only; one may think about a wrapper for OpenLibm instead
+  - ACML (AMD Core Math Library): state unclear
+
 
 **1.0.0 preview 8** (01.07.2015)
 
