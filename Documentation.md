@@ -8,7 +8,7 @@ curve/surface fitting, special functions etc.
 Moreover the Excel interface of Dodoni.net contains a part that serves as a high-level extension of [Excel-DNA](https://excel-dna.net), 
 i.e. it can be used as building block for individual Excel Add-In's independent of other features of Dodoni.net.
 
-* Dodoni.net is free for all use, and distributed under a permissive open-source [license](LICENSE) that also allows commercial use. 
+* Dodoni.net is free for all use, and distributed under [MIT license](LICENSE) that also allows commercial use. 
 * The project [Roadmap](Roadmap) provide an overview of progress made towards releasing a version. 
 
 **[Release notes](ReleaseNotes)**

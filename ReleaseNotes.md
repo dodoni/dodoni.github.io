@@ -1,6 +1,6 @@
 ## Release notes
 
-** 01.xx.2019: 0.1
+**0.1
 
 After a long period of inactivity the Dodoni.net project was relaunched.
 
