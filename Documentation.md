@@ -8,10 +8,10 @@ curve/surface fitting, special functions etc.
 Moreover the Excel interface of Dodoni.net contains a part that serves as a high-level extension of [Excel-DNA](https://excel-dna.net), 
 i.e. it can be used as building block for individual Excel Add-In's independent of other features of Dodoni.net.
 
-* Dodoni.net is free for all use, and distributed under [MIT license]((https://github.com/dodoni/dodoni.net/LICENSE) that also allows commercial use. 
+* Dodoni.net is free for all use, and distributed under [MIT license](https://github.com/dodoni/dodoni.net/LICENSE) that also allows commercial use. 
 * The project [Roadmap](Roadmap) provide an overview of progress made towards releasing a version. 
 
-**[Release notes]((https://github.com/dodoni/dodoni.net/ReleaseNotes.md)**
+**[Release notes](https://github.com/dodoni/dodoni.net/ReleaseNotes.md)**
 
 ## 2. Preliminaries
 Dodoni.net is developed under .net Standard 2.0. 
@@ -51,10 +51,10 @@ libraries (dll's) into the specified binary folder. Some managed code is availab
 
 
 ## 4. Structure of the framework
-The Dodoni.net project is divided into several assemblies (packages). Each of it related to a specific purpose:
+The Dodoni.net project is divided into several assemblies (packages). Each of it is related to a specific purpose:
  
  **[Dodoni.BasicComponents](BasicComponents)**: 
-Contains basic classes and methods needed for the project. This assembly provide general stuff which is _not_ directly related to mathematical problems, 
+Contains basic classes and methods needed for the project. This assembly is _not_ directly related to mathematical problems, 
 mathematical finance, Excel interface etc.
 
  **[Dodoni.BasicMathLibrary](BasicMathLibrary)**: 
@@ -80,16 +80,16 @@ The [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/fr
 libraries to the Dodoni.net framework. The following assemblies provides wrapper for 
 specific (native) 3rd Party Libraries to enable the use of these Libraries within the Dodoni.net framework:
 
-**Assembly** | **Library** | ** Remarks ** |
+**Assembly** | **Library** | **Remarks** |
 -------------|-------------|---------------|
 **[Dodoni.MathLibrary.Native.ACML](Dodoni.MathLibrary.Native.ACML)**| [AMD Core Math Library](http://en.wikipedia.org/wiki/AMD_Core_Math_Library) (ACML) Library | The ACML is an end-of-life product.
 **[Dodoni.MathLibrary.Native.BLAS](Dodoni.MathLibrary.Native.BLAS)**| [BLAS](http://www.netlib.org/blas/) Library (Fortran interface)
 **[Dodoni.MathLibrary.Native.CBLAS](Dodoni.MathLibrary.Native.CBLAS)**| C-Interface of the [BLAS](http://www.netlib.org/blas/) Library (CBLAS)
 **[Dodoni.MathLibrary.Native.FFTW](Dodoni.MathLibrary.Native.FFTW)**| [FFTW](http://www.fftw.org/) Library
-**[Dodoni.MathLibrary.Native.LibM](Dodoni.MathLibrary.Native.LibM)**| [LibM](http://developer.amd.com/tools-and-sdks/cpu-development/libm/), a 64bit software library containing a collection of basic math functions and vector functions
+**[Dodoni.MathLibrary.Native.LibM](Dodoni.MathLibrary.Native.LibM)**| [LibM](https://developer.amd.com/amd-cpu-libraries/amd-math-library-libm/), a 64bit software library containing a collection of basic math functions and vector functions | No support for Windows anymore?
 **[Dodoni.MathLibrary.Native.MKL](Dodoni.MathLibrary.Native.MKL)**| [Math Kernel Library](http://en.wikipedia.org/wiki/Math_Kernel_Library) (MKL) Library
 **[Dodoni.MathLibrary.Native.NLopt](Dodoni.MathLibrary.Native.NLopt)**| [NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt), a free/open-source library for nonlinear optimization
-**[Dodoni.MathLibrary.Native.Yeppp](Dodoni.MathLibrary.Native.Yeppp)**| [Yeppp!](http://www.yeppp.info/),  a high-performance SIMD-optimized mathematical library for x86, ARM, and MIPS processors on Windows, Android, Mac OS X, and GNU/Linux systems
+**[Dodoni.MathLibrary.Native.Yeppp](Dodoni.MathLibrary.Native.Yeppp)**| [Yeppp!](https://bitbucket.org/MDukhan/yeppp),  a high-performance SIMD-optimized mathematical library for x86, ARM, and MIPS processors on Windows, Android, Mac OS X, and GNU/Linux systems | Not under active development?
 
  **[Dodoni.CommonMathLibrary](MathLibrary)**: 
 Contains some managed implementation of mathematikcal functions, for example:
@@ -100,7 +100,6 @@ Contains some managed implementation of mathematikcal functions, for example:
 
 **[Dodoni.FinanceBasics](FinanceBasics)**: 
 Provides _interfaces_ for day count conventions, business day conventions, holiday calendars, Market convention templates etc. 
-
 Moreover it contains some Tenor arithmetic, Compounding rules, date factory etc. as well as an implementation of the Black-Scholes and the Bachelier (=normal Black) model etc. 
 It does not contain an engine for pricing or risk management for financal instruments etc. This is located in a separate assembly.
 
@@ -121,13 +120,13 @@ Serves as Excel Add-In for the Dodoni.net project that provides UDF's (user defi
 * The unit tests of the Dodoni.net project serves as _living documentation_.
 
 _**... for the Excel Add-In:**_
-* A documentation of the UDF's (user defined functions) provided by the Excel Add-In of the Dodoni.net project is still not available, but the distribution contains several example Excel sheets. 
+* A documentation of the UDF's (user defined functions) provided by the Excel Add-In of the Dodoni.net project and several example Excel sheets is part of the distribution. 
 * _The name of each user defined function (UDF) of the Add-In starts with 'do' which can be interpreted as **do** for doing or as short-name for **Do**doni.net._
 
 ## 6. Howto
 * **....write _individual_  Excel Add-Ins with [Excel-DNA](exceldna.codeplex.com) and Dodoni.net?**
 
-Create a new .net project (at least .NET 4.0). Add references at least to the following assemblies of the distribution of [Excel-DNA](exceldna.codeplex.com) and Dodoni.net: 
+Create a new .net project. Add references at least to the following assemblies of the distribution of [Excel-DNA](exceldna.codeplex.com) and Dodoni.net: 
 * Dodoni.BasicComponents.dll, 
 * Dodoni.XLBasicComponents.dll, 
 * ExcelDna.Integration.dll.
@@ -149,10 +148,11 @@ For the features of the [Dodoni.XLBasicComponents](XLBasicComponents) assembly w
 
 * **...extend the Excel Add-In of the Dodoni.net project?**
 
-If you like to add further UDF (user defined functions) to the Excel Add-In it is not recommended to extend or modify the `Dodoni.XLIntegration` assembly. Instead, create a new .net project (at least .NET 4.0) and add references to `ExcelDna.Integration.dll` of the distribution of [Excel-DNA](exceldna.codeplex.com) and to the required assemblies of the Dodoni.net project, i.e. _at least_
+If you like to add further UDF (user defined functions) to the Excel Add-In it is not recommended to extend or modify the `Dodoni.XLIntegration` assembly. Instead, create a new .net project and add references to `ExcelDna.Integration.dll` of the distribution of [Excel-DNA](exceldna.codeplex.com) and to the required assemblies of the Dodoni.net project, i.e. _at least_
 * Dodoni.BasicComponents.dll, 
 * Dodoni.XLBasicComponents.dll, 
 * Dodoni.XLIntegration.dll.
+
 Copy the XLDodoni.dna file of the distribution of the Dodoni.net project to the directory of the binaries of your .net project and store it under a file name of your choice. Modify the .dna file in a way that it refers to your .net project as well. Copy the 32- or 64-bit XLL file of [Excel-DNA](exceldna.codeplex.com) to the same directory and store it under the same name as the .dna file. This XLL should make available your individual UDF's.
 
 * **...use a specific logging?**

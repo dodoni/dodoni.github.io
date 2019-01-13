@@ -28,7 +28,7 @@ the development of Excel-AddIns.
 The Dodoni.net project is divided into several assemblies, each of it is related to a specific purpose, see 
 [Documentation](Documentation.md) for further details. 
 * [Roadmap](Roadmap.md),
-* [Release notes]((https://github.com/dodoni/dodoni.net/ReleaseNotes.md).
+* [Release notes](https://github.com/dodoni/dodoni.net/ReleaseNotes.md).
 
 #### Third-party libraries
 For the following third-party libraries some functionality is provided (as a .net wrapper) by the Dodoni.net project:
