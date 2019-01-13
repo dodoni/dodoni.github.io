@@ -8,19 +8,20 @@ curve/surface fitting, special functions etc.
 Moreover the Excel interface of Dodoni.net contains a part that serves as a high-level extension of [Excel-DNA](https://excel-dna.net), 
 i.e. it can be used as building block for individual Excel Add-In's independent of other features of Dodoni.net.
 
-* Dodoni.net is free for all use, and distributed under [MIT license](LICENSE) that also allows commercial use. 
+* Dodoni.net is free for all use, and distributed under [MIT license]((https://github.com/dodoni/dodoni.net/LICENSE) that also allows commercial use. 
 * The project [Roadmap](Roadmap) provide an overview of progress made towards releasing a version. 
 
-**[Release notes](ReleaseNotes)**
+**[Release notes]((https://github.com/dodoni/dodoni.net/ReleaseNotes.md)**
 
 ## 2. Preliminaries
-As the name indicates, the Dodoni.net library requires
-* Microsoft .NET framework, at least .NET 4.0.
+Dodoni.net is developed under .net Standard 2.0. 
 
-Moreover, the operation system should be
-* Windows XP, Windows Vista or Windows 7 etc. (32- or 64 bit).
+* The Excel interface is based on .NET framework (4.7.x) and can be used on a 32- and 64 bit operation system.
 
-Perhaps the framework works under [Mono](http://www.mono-project.com/) in an Linux environment as well, but it is not tested yet. 
+* [NUnit](www.nunit.org) test projects are developed under .net core.
+
+The library has not been tested under Linux environment.
+
 
 The complete 
 feature set of Dodoni.net requires external libraries for [BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/), 
@@ -28,10 +29,12 @@ Random Number Generators, Fast-Fourier-Transformations (FFT) etc.
 Some assemblies contains _unsafe_ code (for native code wrapper), thus the library must run in a full trust environment; in general this is no restriction at all.
 
 **... for the Excel Add-In:**
-The Excel interface is based on the [Excel-DNA](https://excel-dna.net) project, an intuitive open source .NET library for using .NET functions in Excel, designed by Govert van Drimmelen. The Add-In has been tested with
+The Excel interface is based on the [Excel-DNA](https://excel-dna.net) project, an intuitive open source .NET library for using .NET functions in Excel, 
+designed by Govert van Drimmelen. The Add-In has been tested with
 * Microsoft Excel 2007 and Excel 2010 (32- and 64 bit).
 
-It should work with other MS Excel versions as well. Macro running must be enable, at least for the `.XLL` file of the Dodoni.net Add-In, change the security level if required. Moreover one should have the right to change (configuration) files in the specified directory. 
+It should work with other MS Excel versions as well. Macro running must be enable, at least for the `.XLL` file of the Dodoni.net Add-In, 
+change the security level if required. Moreover one should have the right to change (configuration) files in the directory where the .XLL` file is located. 
 
 ## 3. Installation
 The Dodoni.net library is avaiable in the [NuGet Gallery](https://www.nuget.org). Moreover you can download an Excel-AddIn, i.e. a `.XLL` file. The Excel Add-In does not support 
@@ -43,42 +46,43 @@ The complete feature set of Dodoni.net requires external (native) libraries for
 * Random Number Generators, 
 * Fast-Fourier-Transformations (FFT), optimizer etc. 
 
-which are not part of the distribution (some managed code is available as fallback implementation). If these features are used one has to copy the corresponding 
-libraries (dll's) into the specified binary folder. 
-The configuration of the Excel-AddIn shows the corresponding file names etc., see also [Dodoni.BasicMathLibrary](BasicMathLibrary) etc.
+Due to license restrictions some external library should be downloaded separatly and one has to copy the corresponding 
+libraries (dll's) into the specified binary folder. Some managed code is available as fallback implementation. 
+
 
 ## 4. Structure of the framework
-The Dodoni.net project is divided into several subprojects. Each subproject ob Dodoni.net is related to a specific purpose:
+The Dodoni.net project is divided into several assemblies (packages). Each of it related to a specific purpose:
  
  **[Dodoni.BasicComponents](BasicComponents)**: 
 Contains basic classes and methods needed for the project. This assembly provide general stuff which is _not_ directly related to mathematical problems, 
-mathematical finance, Excel interface etc., for example a logfile framework and methods for configuration files etc.
+mathematical finance, Excel interface etc.
 
  **[Dodoni.BasicMathLibrary](BasicMathLibrary)**: 
 Provides _mainly the infrastructure_ and some basic implementations for mathematical operations, for example:
 * [BLAS](http://www.netlib.org/blas/) library (interface structure + a managed fallback implementation), 
-* [LAPACK](http://www.netlib.org/lapack/) library (wrapper for native code), 
-* generic interface for Fast-Fourier-Transformations (FFT) (+ a dummy managed fallback implementation),
+* [LAPACK](http://www.netlib.org/lapack/) library (interface structure), 
+* Fast-Fourier-Transformations (FFT) (interface structure + a dummy managed fallback implementation),
 * Vector operations (interface structure + a managed fallback implementation),
-* interfaces for [Special functions](http://en.wikipedia.org/wiki/List_of_mathematical_functions),
-* interfaces for interpolation and parametrization of curves and surfaces with some basic implementations (linear, spline etc.)
-* interfaces for numerical integration, Random Number Generators, Optimization etc.
+* [Special functions](http://en.wikipedia.org/wiki/List_of_mathematical_functions) (interface structure),
+* Interpolation and parametrization of curves and surfaces (interface structure  + some basic implementations: linear, spline etc.)
+* numerical integration, Random Number Generators, Optimization etc. (interface structure)
 * implementation for root finding algorithms for polynomials etc.
 
-This enables to incorporate the functionality of 3th party mathematical libraries, as for example [Math Kernel Library](http://en.wikipedia.org/wiki/Math_Kernel_Library) (MKL), 
+This enables to incorporate the functionality of 3rd party mathematical libraries, as for example [Math Kernel Library](http://en.wikipedia.org/wiki/Math_Kernel_Library) (MKL), 
 [AMD Core Math Library](http://en.wikipedia.org/wiki/AMD_Core_Math_Library) (ACML), [Fastest Fourier Transform in the West](http://www.fftw.org/) (FFTW), 
 [NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt), [Yeppp!](http://www.yeppp.info/) etc. 
 See 
-> Dodoni.MathLibary.Native.<Name of 3th party Library>
+> Dodoni.MathLibary.Native.<Name of 3rd party Library>
 
 for a specific wrapper. 
 
-The [Managed Extensibility Framework](http://en.wikipedia.org/wiki/Managed_Extensibility_Framework) (MEF) is used to dynamic link some of the external mathematical 
-libraries to the Dodoni.net framework. The following subprojects (assemblies) provides wrapper for specific (native) 3th Party Libraries to enable the use of these Libraries within the Dodoni.net framework:
+The [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/index) (MEF) is used to dynamic link external  
+libraries to the Dodoni.net framework. The following assemblies provides wrapper for 
+specific (native) 3rd Party Libraries to enable the use of these Libraries within the Dodoni.net framework:
 
-**Assembly** | **Library**
--------------|------------
-**[Dodoni.MathLibrary.Native.ACML](Dodoni.MathLibrary.Native.ACML)**| [AMD Core Math Library](http://en.wikipedia.org/wiki/AMD_Core_Math_Library) (ACML) Library
+**Assembly** | **Library** | ** Remarks ** |
+-------------|-------------|---------------|
+**[Dodoni.MathLibrary.Native.ACML](Dodoni.MathLibrary.Native.ACML)**| [AMD Core Math Library](http://en.wikipedia.org/wiki/AMD_Core_Math_Library) (ACML) Library | The ACML is an end-of-life product.
 **[Dodoni.MathLibrary.Native.BLAS](Dodoni.MathLibrary.Native.BLAS)**| [BLAS](http://www.netlib.org/blas/) Library (Fortran interface)
 **[Dodoni.MathLibrary.Native.CBLAS](Dodoni.MathLibrary.Native.CBLAS)**| C-Interface of the [BLAS](http://www.netlib.org/blas/) Library (CBLAS)
 **[Dodoni.MathLibrary.Native.FFTW](Dodoni.MathLibrary.Native.FFTW)**| [FFTW](http://www.fftw.org/) Library
