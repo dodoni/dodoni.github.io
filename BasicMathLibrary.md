@@ -156,7 +156,7 @@ polynomial.GetRoots(roots, Polynomial.RootFinder.EigenvalueApproach);
 If roots can be computed analytically, it is _not_ necessary to create a `IPolynomial` object first, `IRealPolynomial` respectively:
 
 ``` csharp
-var roots = new Complex[4](4);
+var roots = new Complex[4];
 int rootCount = Polynomial.RootFinder.Analytical.GetRoots(
                      absoluteCoefficient, firstOrderCoefficient, 
                      secondOrderCoefficient, thirdOrderCoefficient, 
@@ -174,14 +174,22 @@ var optAlgorithm = optimizer.Create(Interval.Create(lowerBound, upperBound));
 optAlgorithm.Function = opt.Function.Create(x => (x - 1.0) * (x - 1.0));
 // or: optAlgorithm.SetFunction(x => (x - 1.0) * (x - 1.0));
 
-double actualArgMin, actualMinimum;
-var state = optAlgorithm.FindMinimum(initialGuess, out actualArgMin, out actualMinimum);
+var state = optAlgorithm.FindMinimum(initialGuess, out double actualArgMin, out double actualMinimum);
 ```
-For the 1-dimensional case `OneDimOptimizer` serves as factory for `IOneDimOptimizerAlgorithm` objects that encapsulates the algorithm with respect to a specific constraint. In the multi-dimensional case it is rather complex: `MultiDimOptimizer` is the abstract base class for
+For the 1-dimensional case `OneDimOptimizer` serves as factory for `IOneDimOptimizerAlgorithm` objects that encapsulates the algorithm with respect to a specific constraint. 
+
+In the multi-dimensional case it is rather complex: `MultiDimOptimizer` is the abstract base class for
 * `OrdinaryMultiDimOptimizer`: min<sub>x</sub> f(x), where f is a real-valued function,
-* `MultivariateOptimizer`: min<sub>x</sub> ||f(x)||^^2^^, where f(x) = (f,,1,,(x),...,f,,m,,(x)) is a multivariate function,
-* `QuadraticProgram`: min,,x,, 1/2 * x' * A * x + b' * x.
-A object of the above type contains factories for constraints, objective functions as well as to `IMultiDimOptimizerAlgorithm` objects. The latter represents the algorithm itself. The internal representation of objective functions and constraints could be different for each implementation, therefore a individual factory is required. Some extension methods have been added, for example `SetFunction`, which allows a intiutive use. `MultiDimRegion` and `Interval` are factories for _generic_ regions that should be converted into the specific `Multi/OneDimOptimizer.IConstraint` representation in a way similar seen in the above code snippet. The framework should be able to cover arbitrary optimization algorithms.
+* `MultivariateOptimizer`: min<sub>x</sub> ||f(x)||<sup>2</sup>, where f(x) = (f<sub>1</sub>,(x),...,f<sub>m</sub>(x)) is a multivariate function,
+* `QuadraticProgram`: min<sub>x</sub> 1/2 * x' * A * x + b' * x.
+
+An object of the above type contains factories for constraints, objective functions as well as to `IMultiDimOptimizerAlgorithm` objects. 
+The latter represents the algorithm itself. The internal representation of objective functions and constraints could be different 
+for each implementation, therefore a individual factory is required. Some extension methods have been added, 
+for example `SetFunction`, which allows a intiutive use. 
+
+`MultiDimRegion` and `Interval` are factories for _generic_ regions that should be converted into the specific `Multi/OneDimOptimizer.IConstraint` representation 
+in a way similar seen in the above code snippet. The framework should be able to cover arbitrary optimization algorithms.
 
  **OneDimNumericalConstAbscissaIntegrator vs. OneDimNumericalIntegrator**
 `OneDimNumericalIntegrator` and `OneDimNumericalConstAbscissaIntegrator` serves as abstract basis class for numerical integration. The latter assumes a constant set of abscissa to evaluate the specified function. This can be used to accelerate the calculation in the case that one has to apply the numerical integration to almost the same function several times - one can cache part of the calculation. One example are Gaussian quadrature formulas with a specific order. Adaptive approaches are not well suited for this approach. The assembly [Dodoni.MathLibrary](MathLibrary) contains some implementations for both approaches.
