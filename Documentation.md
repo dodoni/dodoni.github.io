@@ -99,7 +99,11 @@ Contains some managed implementation of mathematikcal functions, for example:
 * some 1-/n-dimensional optimization algorithm (Brent, Powell, PRAXIS etc.) etc.
 
 **[Dodoni.FinanceBasics](FinanceBasics)**: 
-Provides _interfaces_ for day count conventions, business day conventions, holiday calendars, Market convention templates etc. 
+Provides _interfaces_ for 
+* day count conventions, 
+* business day conventions, 
+* holiday calendars, 
+* Market convention templates etc. 
 Moreover it contains some Tenor arithmetic, Compounding rules, date factory etc. as well as an implementation of the Black-Scholes and the Bachelier (=normal Black) model etc. 
 It does not contain an engine for pricing or risk management for financal instruments etc. This is located in a separate assembly.
 
@@ -113,7 +117,8 @@ _**... for the Excel Add-In:**_
 Provide functionality for a generic Excel Add-In, i.e. extends [Excel-DNA](exceldna.codeplex.com) by _high-level_ methods, for example an object pool easy accessible in Excel, property/value Excel range queries etc.
 
 **Dodoni.XLIntegration**: 
-Serves as Excel Add-In for the Dodoni.net project that provides UDF's (user defined functions) for most of the functionality of the Dodoni.net project. The source code is _not yet published_.
+Serves as Excel Add-In for the Dodoni.net project that provides UDF's (user defined functions) for parts of the functionality of the Dodoni.net project. 
+The source code is _not yet published_.
 
 ## 5. Further documentation
 * A documentation of the API of the Dodoni.net framework is part of the distribution. 
@@ -127,9 +132,9 @@ _**... for the Excel Add-In:**_
 * **....write _individual_  Excel Add-Ins with [Excel-DNA](exceldna.codeplex.com) and Dodoni.net?**
 
 Create a new .net project. Add references at least to the following assemblies of the distribution of [Excel-DNA](exceldna.codeplex.com) and Dodoni.net: 
-* Dodoni.BasicComponents.dll, 
-* Dodoni.XLBasicComponents.dll, 
-* ExcelDna.Integration.dll.
+* Dodoni.BasicComponents, 
+* Dodoni.XLBasicComponents, 
+* ExcelDna.Integration.
 
 Copy the 32- or 64-bit XLL file of [Excel-DNA](https://excel-dna.net) to the directory of the binaries of your .net project and store it under 
 a file name of your choice. Create a text file with the same file name and suffix .dna with the following content:
@@ -148,15 +153,19 @@ For the features of the [Dodoni.XLBasicComponents](XLBasicComponents) assembly w
 
 * **...extend the Excel Add-In of the Dodoni.net project?**
 
-If you like to add further UDF (user defined functions) to the Excel Add-In it is not recommended to extend or modify the `Dodoni.XLIntegration` assembly. Instead, create a new .net project and add references to `ExcelDna.Integration.dll` of the distribution of [Excel-DNA](exceldna.codeplex.com) and to the required assemblies of the Dodoni.net project, i.e. _at least_
-* Dodoni.BasicComponents.dll, 
-* Dodoni.XLBasicComponents.dll, 
-* Dodoni.XLIntegration.dll.
+If you like to add further UDF (user defined functions) to the Excel Add-In `Dodoni.XLIntegration`, create a new .net project and add references to `ExcelDna.Integration` of the 
+distribution of [Excel-DNA](exceldna.codeplex.com) and to the required assemblies of the Dodoni.net project, i.e. _at least_
+* Dodoni.BasicComponents, 
+* Dodoni.XLBasicComponents, 
+* Dodoni.XLIntegration.
 
-Copy the XLDodoni.dna file of the distribution of the Dodoni.net project to the directory of the binaries of your .net project and store it under a file name of your choice. Modify the .dna file in a way that it refers to your .net project as well. Copy the 32- or 64-bit XLL file of [Excel-DNA](exceldna.codeplex.com) to the same directory and store it under the same name as the .dna file. This XLL should make available your individual UDF's.
+Copy the XLDodoni.dna file of the distribution of the Dodoni.net project to the directory of the binaries of your .net project and store it under a 
+file name of your choice. Modify the .dna file in a way that it refers to your .net project as well. Copy the 32- or 64-bit XLL file 
+of [Excel-DNA](exceldna.codeplex.com) to the same directory and store it under the same name as the .dna file. This XLL should make available your individual UDF's.
 
 * **...use a specific logging?**
-Write an individual implementation for the ILogger interface and mark it with the Export attribute of the  Managed Extensibility Framework (MEF), i.e.
+The logging is mainly based on [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/). Write an individual implementation for 
+the ILogger interface and mark it with the Export attribute of the  Managed Extensibility Framework (MEF), i.e.
 
 ``` csharp
 [Export(typeof(ILogger))]
@@ -175,10 +184,13 @@ Create or modify the configuration file of the Dodoni.net project or of your ind
 ```
 
 * **...create an individual user interface with a separate implementation for Holiday calendar, business day conventions etc.? For example how to link the Dodoni.net 
-framework to a trading system?**
+framework to a trading or riskmanagement system?**
 
-Perhaps instead of the Excel Add-In you may use functionality of the Dodoni.net library in a different program, for example a trading system. In this case you should ignore the assemblies of the Dodoni.net framework which are connected to the Excel Add-In, i.e. 
-* Dodoni.XLBasicComponents.dll and 
-* Dodoni.XLIntegration.dll. 
+Perhaps instead of the Excel Add-In you may use functionality of the Dodoni.net library in a different program, for example a trading system or riskmanagement system. 
+In this case you should ignore the assemblies of the Dodoni.net framework which are connected to the Excel Add-In, i.e. 
+* Dodoni.XLBasicComponents and 
+* Dodoni.XLIntegration. 
 
-In general a trading system already contains implementations for Holiday calendar, business day conventions etc. Therefore you should replace Dodoni.FinanceCommonMarketUsages by a new assembly that wraps these functions and structures to the infastructure of Dodoni.net.
+In general a trading system already contains implementations for Holiday calendar, business day conventions etc. 
+Therefore you should replace Dodoni.FinanceCommonMarketUsages by a new assembly that wraps these functions and 
+structures to the infastructure of Dodoni.net.

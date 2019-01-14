@@ -1,13 +1,15 @@
 ﻿## `Dodoni.BasicComponents`
 
 #### 1. Overview
-This assembly contains basic classes and methods needed for the Dodoni.net project. This assembly provide general stuff which is not directly related to mathematical problems, mathematical finance, Excel interface etc.
+This assembly contains basic classes and methods needed for the Dodoni.net project. This assembly provide general stuff which is not directly related to mathematical problems, 
+mathematical finance, Excel interface etc.
 
 #### 2. Dependencies
-This assembly does not depend on any other assembly of the Dodoni.net project. However each assembly of the Dodoni.net project depends on `Dodoni.BasicComponents`.
+This assembly does not depend on any other assembly of the Dodoni.net project. Instead each assembly of the Dodoni.net project depends on `Dodoni.BasicComponents`.
 
 #### 3. Main concepts and helpful code snippets
-One may have a look into the unit and integration test projects of `Dodoni.BasicComponents`; see API documentation for more information.
+One may have a look into the unit test project and integration test project of 
+`Dodoni.BasicComponents`; see API documentation for more information.
 
  **IInfoOutputQueriable**
 It is well-known that the `ToString` method can be used to return a string representation of a specific object. In many cases it would be nice to have more than a string representation only, for example a collection of property names and property values etc. That is the reason why the interface `IInfoOutputQueriable` has been established. With this interface it is possible to fetch a collection of properties, DataTable objects etc. from a specific instance. The values are used for some kind of output only (as in the case of the `ToString()` method), therefore the output is always read-only and often not type safe. Moreover the output can be grouped in some _package_. This interface is heavily used and allows in a simple way to query some information.
