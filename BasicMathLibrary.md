@@ -180,10 +180,10 @@ For the 1-dimensional case `OneDimOptimizer` serves as factory for `IOneDimOptim
 
 In the multi-dimensional case it is rather complex: `MultiDimOptimizer` is the abstract base class for
 * `OrdinaryMultiDimOptimizer`: min<sub>x</sub> f(x), where f is a real-valued function,
-* `MultivariateOptimizer`: min<sub>x</sub> ||f(x)||<sup>2</sup>, where f(x) = (f<sub>1</sub>,(x),...,f<sub>m</sub>(x)) is a multivariate function,
+* `MultivariateOptimizer`: min<sub>x</sub> &#124; &#124;f(x)&#124; &#124;<sup>2</sup>, where f(x) = (f<sub>1</sub>(x),...,f<sub>m</sub>(x)) is a multivariate function,
 * `QuadraticProgram`: min<sub>x</sub> 1/2 * x' * A * x + b' * x.
 
-An object of the above type contains factories for constraints, objective functions as well as to `IMultiDimOptimizerAlgorithm` objects. 
+An object of the above type contains factories for constraints, objective functions as well as for `IMultiDimOptimizerAlgorithm` objects. 
 The latter represents the algorithm itself. The internal representation of objective functions and constraints could be different 
 for each implementation, therefore a individual factory is required. Some extension methods have been added, 
 for example `SetFunction`, which allows a intiutive use. 
@@ -192,7 +192,9 @@ for example `SetFunction`, which allows a intiutive use.
 in a way similar seen in the above code snippet. The framework should be able to cover arbitrary optimization algorithms.
 
  **OneDimNumericalConstAbscissaIntegrator vs. OneDimNumericalIntegrator**
-`OneDimNumericalIntegrator` and `OneDimNumericalConstAbscissaIntegrator` serves as abstract basis class for numerical integration. The latter assumes a constant set of abscissa to evaluate the specified function. This can be used to accelerate the calculation in the case that one has to apply the numerical integration to almost the same function several times - one can cache part of the calculation. One example are Gaussian quadrature formulas with a specific order. Adaptive approaches are not well suited for this approach. The assembly [Dodoni.MathLibrary](MathLibrary) contains some implementations for both approaches.
+`OneDimNumericalIntegrator` and `OneDimNumericalConstAbscissaIntegrator` serves as abstract basis class for numerical integration. 
+
+The latter assumes a constant set of abscissa to evaluate the specified function. This can be used to accelerate the calculation in the case that one has to apply the numerical integration to almost the same function several times - one can cache part of the calculation. One example are Gaussian quadrature formulas with a specific order. Adaptive approaches are not well suited for this approach. The assembly [Dodoni.MathLibrary](MathLibrary) contains some implementations for both approaches.
 
  **RandomNumberLibrary**
 Moreover, the assemly `Dodoni.BasicMathLibrary` provides the infrastructure for random number generation etc., but no specific implementations for it. 
