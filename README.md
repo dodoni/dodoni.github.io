@@ -22,7 +22,7 @@ Fast-Fourier-Transformations etc. See [Documentation](Documentation.md) for furt
 
 * One useful by-product of the Dodoni.net project is a high-level extension of [Excel-DNA](https://excel-dna.net) which allowes 
 the development of Excel-AddIns. 
-* Dodoni.net is free for all use, and distributed under [MIT license](https://github.com/dodoni/dodoni.net/LICENSE) that also allows commercial use.
+* Dodoni.net is free for all use, and distributed under [MIT license](https://github.com/dodoni/dodoni.net/LICENSE.md) that also allows commercial use.
 
 #### Schedule/Roadmap
 The Dodoni.net project is divided into several assemblies, each of it is related to a specific purpose, see 

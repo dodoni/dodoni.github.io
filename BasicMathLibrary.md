@@ -87,6 +87,7 @@ Provides functions for Vector units, i.e. methods applied to arrays of floating 
  **SpecialFunction** 
 Provides [Special functions](http://en.wikipedia.org/wiki/List_of_mathematical_functions), i.e.  mathematical functions with specific names, as for example erf(x) 
 (error function), <sub>1</sub>F<sub>1</sub> (Hypergeometric function) etc. 
+
 The assembly `Dodoni.BasicMathLibrary` does not contain implementations for special functions, except for the (inverse) cumulative distribution 
 function of the Standard normal distribution which is accessible via the class `StandardNormalDistribution` only. 
 Use the [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/index)(MEF) as described above to dynamically 
@@ -134,8 +135,8 @@ The class `GridPointSurface2d` serves as factory for two-dimensional surface con
                               matrix, 
                               xLabels, 
                               yLabels,
- LabelMatrix.MissingValueReplenishment.WeightedNearestGridPoints.xAxis.Linear, 
- orderOfInput: LabelMatrix.OrderOfInput.DisorderedHorizontalLabels);
+                              LabelMatrix.MissingValueReplenishment.WeightedNearestGridPoints.xAxis.Linear, 
+                              orderOfInput: LabelMatrix.OrderOfInput.DisorderedHorizontalLabels);
 
  var surface = GridPointSurface2d.Create(
                           labelMatrix, 
