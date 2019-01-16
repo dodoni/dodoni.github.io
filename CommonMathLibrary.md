@@ -17,7 +17,7 @@ One may have a look in the unit test project of `Dodoni.CommonMathLibrary`; see 
 
  **Numerical integrator**
 The following code snippet shows how to calculate numerically a specific integral with the 
-[https://en.wikipedia.org/wiki/Gauss%E2%80%93Kronrod_quadrature_formula](Gauss-Kronrod-Patterson) approach. 
+[Gauss-Kronrod-Patterson](https://en.wikipedia.org/wiki/Gauss%E2%80%93Kronrod_quadrature_formula) approach. 
 The default constructor takes some default values for the abort condition.
 
 ``` csharp
@@ -48,7 +48,7 @@ var state = optimizerAlgorithm.FindMinimum(initialGuess, out double actualArgMin
 ```
 
 n-dimensional optmization algorithms are more complex, especially for constraints, gradient etc. We present an example with the 
-[https://en.wikipedia.org/wiki/Test_functions_for_optimization](Goldstein Price function) only:
+[Goldstein Price function](https://en.wikipedia.org/wiki/Test_functions_for_optimization):
 ``` csharp
 var optimizer = new NelderMeadOptimizer(
        NelderMeadOptimizer.StandardAbortCondition,
