@@ -76,7 +76,7 @@ See
 
 for a specific wrapper. 
 
-The [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/index) (MEF) is used to dynamic link external  
+The [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/index)(MEF) is used to dynamic link external  
 libraries to the Dodoni.net framework. The following assemblies provides wrapper for 
 specific (native) 3rd Party Libraries to enable the use of these Libraries within the Dodoni.net framework:
 
@@ -91,7 +91,7 @@ specific (native) 3rd Party Libraries to enable the use of these Libraries withi
 **[Dodoni.MathLibrary.Native.NLopt](Dodoni.MathLibrary.Native.NLopt)**| [NLopt](http://ab-initio.mit.edu/wiki/index.php/NLopt), a free/open-source library for nonlinear optimization
 **[Dodoni.MathLibrary.Native.Yeppp](Dodoni.MathLibrary.Native.Yeppp)**| [Yeppp!](https://bitbucket.org/MDukhan/yeppp),  a high-performance SIMD-optimized mathematical library for x86, ARM, and MIPS processors on Windows, Android, Mac OS X, and GNU/Linux systems | Not under active development?
 
- **[Dodoni.CommonMathLibrary](MathLibrary)**: 
+ **[Dodoni.CommonMathLibrary](CommonMathLibrary)**: 
 Contains some managed implementation of mathematikcal functions, for example:
 * numerical integration algorithms (for example Gauss-Kronrod-Patterson etc.),
 * some curve/surface interpolation approaches,

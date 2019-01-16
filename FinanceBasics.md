@@ -18,7 +18,6 @@ One may have a look in the unit test project of Dodoni.FinanceBasics; see API do
  var date = DateTime.Today.AddTenorTimeSpan(tenorTimeSpan);
 ```
 
-{anchor:Compounding}
  **Compounding**
 
 ``` csharp
@@ -41,6 +40,6 @@ double quarterlyInterestRate = Compounding.GetConvertedInterestRate(
                                         ); // i.e. Interest = Notional * (1.0 + r_out/4)^{4 * t}
 ```
 
-{anchor:Conventions}
+
  **Conventions**
 

@@ -3,7 +3,7 @@
 #### 1. Overview
 Provides wrapper for the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt), a free/open-source library for nonlinear optimization, 
 established by Steven G. Johnson. You need to download at least a precompiled release of the library. Copy the file(s) to the binary folder 
-of your .net code and rename it to `libNLopt.dll`.
+of the Dodoni.net project and rename it to `libNLopt.dll`.
 
 #### 2. Dependencies
 This assembly depends on 
@@ -16,7 +16,7 @@ One may have a look in the unit test project of `Dodoni.MathLibrary.Native.NLopt
  **NLoptPtr**
 
 The class `NLoptPtr` serves as wrapper for the internal opaque pointer of the algorithm of the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt). 
-Therefore you will find for almost all function of the API of the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt) a counterpart in this class. 
+Therefore you will find for many function of the API of the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt) a counterpart in this class. 
 
 ``` csharp
  NLoptPtr ptr = new NLoptPtr(NLoptAlgorithm.LN_PRAXIS, 2);
@@ -29,14 +29,13 @@ Therefore you will find for almost all function of the API of the [NLopt library
  ptr.SetFunction((n, x, gradient, data) => { return x[0] * x[0] + x[1] * x[1] + 1.123; });
 
  var argMin = new double[2]{ 1.0, 4.8 };
- double minimum; // expected: 1.123
- var errorCode = ptr.FindMinimum(argMin, out minimum);
+ var errorCode = ptr.FindMinimum(argMin, out double minimum); // expected minimum: 1.123
 ```
 
  **NLoptMultiDimOptimizer**
 
-In contrast to `NLoptPtr` the class `NLoptMultiDimOptimizer` implements the more common class `(Ordinary)MultiDimOptimizer` 
-of [Dodoni.BasicMathLibrary](BasicMathLibrary) which serves as general infastructure for multi-dimensional optimization. 
+In contrast to `NLoptPtr`, the class `NLoptMultiDimOptimizer` implements the more common class `(Ordinary)MultiDimOptimizer` 
+of [Dodoni.BasicMathLibrary](BasicMathLibrary) which serves as infastructure for multi-dimensional optimization in general. 
 Therefore one first create a specific `(NLopt)MultiDimOptimizer` object. 
 Constraints and the representation of the objective function are specific for the [NLopt library](http://ab-initio.mit.edu/wiki/index.php/NLopt). 
 Therefore one has to apply the specific factory for it. The following code snippet shows a simple example.
@@ -53,12 +52,13 @@ Therefore one has to apply the specific factory for it. The following code snipp
 // alternative: alg.SetFunction(x => x[0]*x[0] + x[1]*x[1] + 1.123);
 
  var argMin = new []{ 1.4, 5.8 };
- double minimum;
- var errorCode = alg.FindMinimum(argMin, out minimum);
+ var errorCode = alg.FindMinimum(argMin, out double minimum);
 ```
 
-Moreover a logging can be used via an optional argument of `NLoptMultiDimOptimizer`. You need more freedom in the adjustment of the specific algorithm? 
-No problem, the constructors of `NLoptMultiDimOptimizer` provides an optional argument that is a delegate (function pointer) which 
+Moreover a logging can be used via an optional argument of `NLoptMultiDimOptimizer`. 
+
+You need more freedom in the adjustment of the specific algorithm? 
+The constructors of `NLoptMultiDimOptimizer` provides an optional argument that is a delegate (function pointer) which 
 will be applied to the internal `NLoptPtr` object. Therefore one can apply lambda calculus, for example to establish a local optimizer, 
 set initial step size etc. 
 

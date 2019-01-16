@@ -1,4 +1,4 @@
-## {{Dodoni.CommonMathLibrary}}
+## `Dodoni.CommonMathLibrary`
 
 #### 1. Overview
 The assembly {{Dodoni.CommonMathLibrary}} contains managed implementations of several mathematikcal operations, for example:
@@ -16,9 +16,10 @@ This assembly depends on
 One may have a look in the unit test project of {{Dodoni.CommonMathLibrary}}; see API documentation for more information.
 
  **Numerical integrator**
-The following code snippet shows how to calculate numerically a specific integral with the Gauss-Kronrod-Patterson approach. The default constructor takes some default values for the abort condition.
+The following code snippet shows how to calculate numerically a specific integral with the Gauss-Kronrod-Patterson approach. 
+The default constructor takes some default values for the abort condition.
 
-{code:c#}
+``` csharp
 var gaussKronrodPatterson = new GaussKronrodPatterson255Integrator();
 var integrator = gaussKronrodPatterson.Create();
 
@@ -29,24 +30,24 @@ integrator.TrySetBounds(lowerBound, upperBound);
 integrator.FunctionToIntegrate = x => x * x;
 
 var value = integrator.GetValue();
-{code:c#}
+```
 
 
  **Optimizer**
-The general infastructure for (1- and n-dimensional) optimization algorithms can be found in [Dodoni.BasicMathLibrary](BasicMathLibrary). The following code snippets shows a simple example how  a 1-dimensional optimizer can be used:
+The general infastructure for (1- and n-dimensional) optimization algorithms can be found in 
+[Dodoni.BasicMathLibrary](BasicMathLibrary). The following code snippets shows a simple example how a 1-dimensional optimizer can be used:
 
-{code:c#}
+``` csharp
 var optimizer = new GoldenSectionSearchOptimizer();
 var algorithm = optimizer.Create(Interval.Create(lowerBound, upperBound));
 
 agorithm.Function = optimizer.Function.Create(x => (x - 1.0) * (x - 1.0));
 
-double actualArgMin, actualMinimum;
-var state = optimizerAlgorithm.FindMinimum(initialGuess, out actualArgMin, out actualMinimum);
-{code:c#}
+var state = optimizerAlgorithm.FindMinimum(initialGuess, out double actualArgMin, out double actualMinimum);
+```
 
 n-dimensional optmization algorithms are more complex, especially for constraints, gradient etc. We present an example with the Goldstein Price function only:
-{code:c#}
+``` csharp
 var optimizer = new NelderMeadOptimizer(
        NelderMeadOptimizer.StandardAbortCondition,
        MultiDimOptimizerConstraintProvider.BoxTransformation);
@@ -69,7 +70,7 @@ var argMin = new[](){0.25, -0.7};
 
 double minimum;  // expected: 3; argMin = {0.0, -1.0}
 var state = optimizerAlgorithm.FindMinimum(argMin, out minimum);
-{code:c#}
+```
 
 
 

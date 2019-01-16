@@ -24,7 +24,7 @@ This assembly depends on
 * [Dodoni.BasicComponents](BasicComponents)
 
 #### 3. Main concepts and helpful code snippets
-The [Managed Extensibility Framework](http___en.wikipedia.org_wiki_Managed_Extensibility_Framework) (MEF) is used to dynamic link some of the external mathematical libraries to the Dodoni.net framework. Therefore one has to apply the `Export` attribute of the MEF framework to an individual implementation, for example
+The [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/index)(MEF) is used to dynamic link some of the external mathematical libraries to the Dodoni.net framework. Therefore one has to apply the `Export` attribute of the MEF framework to an individual implementation, for example
 
 ``` csharp
  [Export(typeof(BLAS.ILibrary))]
@@ -55,7 +55,7 @@ The names of the methods are almost identical to the LAPACK naming convention. _
  // Cholesky decomposition:
 int n = ...
 double[] a = 
-LAPACK.LinearEquations.MatrixFactorization.dpotrf( BLAS.TriangularMatrixType.LowerTriangularMatrix, n, a); 
+LAPACK.LinearEquations.MatrixFactorization.dpotrf(BLAS.TriangularMatrixType.LowerTriangularMatrix, n, a); 
 ```
 
  **FFT** 
@@ -85,7 +85,13 @@ Provides functions for Vector units, i.e. methods applied to arrays of floating 
 ```
 
  **SpecialFunction** 
-Provides [Special functions](http://en.wikipedia.org/wiki/List_of_mathematical_functions), i.e.  mathematical functions with specific names, as for example erf(x) (error function), ,,1,,F,,1,, (Hypergeometric function) etc. The assembly `Dodoni.BasicMathLibrary` does not contain implementations for special functions, except for the (inverse) cumulative distribution function of the Standard normal distribution which is accessible via the class `StandardNormalDistribution` only. Use the [Managed Extensibility Framework](http___en.wikipedia.org_wiki_Managed_Extensibility_Framework) (MEF) as described above to dynamically link to some external mathematical library that implements `SpecialFunction.ILibrary`. The assembly [Dodoni.MathLibrary](MathLibrary) contains a partial implementation of this interface.
+Provides [Special functions](http://en.wikipedia.org/wiki/List_of_mathematical_functions), i.e.  mathematical functions with specific names, as for example erf(x) 
+(error function), <sub>1</sub>F<sub>1</sub> (Hypergeometric function) etc. 
+The assembly `Dodoni.BasicMathLibrary` does not contain implementations for special functions, except for the (inverse) cumulative distribution 
+function of the Standard normal distribution which is accessible via the class `StandardNormalDistribution` only. 
+Use the [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/index)(MEF) as described above to dynamically 
+link to some external mathematical library that implements `SpecialFunction.ILibrary`. 
+
 
 ``` csharp
  SpecialFunction.PrimitiveIntegral.Erf(x);
@@ -168,7 +174,7 @@ int rootCount = Polynomial.RootFinder.Analytical.GetRoots(
 Provides the infrastructure for optimization for 1- and multi-dimensional problems, but no specific implementations for it. 
 
 ``` csharp
-var opt = new BrentOptimizer(); // from Dodoni.MathLibrary
+var opt = new BrentOptimizer(); // from Dodoni.CommonMathLibrary
 var optAlgorithm = optimizer.Create(Interval.Create(lowerBound, upperBound));
 
 optAlgorithm.Function = opt.Function.Create(x => (x - 1.0) * (x - 1.0));
@@ -180,7 +186,7 @@ For the 1-dimensional case `OneDimOptimizer` serves as factory for `IOneDimOptim
 
 In the multi-dimensional case it is rather complex: `MultiDimOptimizer` is the abstract base class for
 * `OrdinaryMultiDimOptimizer`: min<sub>x</sub> f(x), where f is a real-valued function,
-* `MultivariateOptimizer`: min<sub>x</sub> &#124; &#124;f(x)&#124; &#124;<sup>2</sup>, where f(x) = (f<sub>1</sub>(x),...,f<sub>m</sub>(x)) is a multivariate function,
+* `MultivariateOptimizer`: min<sub>x</sub> &#124;&#124;f(x)&#124;&#124;<sup>2</sup>, where f(x) = (f<sub>1</sub>(x),...,f<sub>m</sub>(x)) is a multivariate function,
 * `QuadraticProgram`: min<sub>x</sub> 1/2 * x' * A * x + b' * x.
 
 An object of the above type contains factories for constraints, objective functions as well as for `IMultiDimOptimizerAlgorithm` objects. 
