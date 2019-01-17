@@ -61,7 +61,7 @@ LAPACK.LinearEquations.MatrixFactorization.dpotrf(BLAS.TriangularMatrixType.Lowe
  **FFT** 
 Serves as factory for (1-dimensional) Fast-Fourier transformations, i.e. 
 
-:: H,,n,, = a * \sum_{k=0}^{N-1} h,,k,, * exp( -/+ 2 \pi * i * k * n * \alpha), 
+$$H_n = a * \sum_{k=0}^{N-1} h_k * exp( -/+ 2 \pi * i * k * n * \alpha),$$ 
 where \alpha=1/N for a ordinary (Fast) Fourier transformation and \alpha arbritrary for a Fractional (Fast) Fourier transformation. 
 
 ``` csharp
@@ -122,7 +122,7 @@ var value = gridPointCurve.GetValue(3.75);
 The class `GridPointSurface2d` serves as factory for two-dimensional surface construction. Often one has a matrix of points with some missing values. Therefore one first has to create a `LabelMatrix` object which can fill missing values.
 
 ``` csharp
- double[]matrix = new double[]{ 1, 2, 3, 4, Double.NaN, 6, 7, 8, 9 };
+var matrix = new double[]{ 1, 2, 3, 4, Double.NaN, 6, 7, 8, 9 };
 // matrix is provided column-by-column
  int rowCount = 3;
  int columnCount = 3;
@@ -236,7 +236,10 @@ The framework should be able to cover arbitrary optimization algorithms.
  **OneDimNumericalConstAbscissaIntegrator vs. OneDimNumericalIntegrator**
 `OneDimNumericalIntegrator` and `OneDimNumericalConstAbscissaIntegrator` serves as abstract basis class for numerical integration. 
 
-The latter assumes a constant set of abscissa to evaluate the specified function. This can be used to accelerate the calculation in the case that one has to apply the numerical integration to almost the same function several times - one can cache part of the calculation. One example are Gaussian quadrature formulas with a specific order. Adaptive approaches are not well suited for this approach. The assembly [Dodoni.MathLibrary](MathLibrary) contains some implementations for both approaches.
+The latter assumes a constant set of abscissa to evaluate the specified function. This can be used to accelerate the calculation in the 
+case that one has to apply the numerical integration to almost the same function several times - one can cache part of the calculation. 
+One example are Gaussian quadrature formulas with a specific order. 
+Adaptive approaches are not well suited for this approach. The assembly [Dodoni.CommonMathLibrary](CommonMathLibrary) contains implementations for both approaches.
 
  **RandomNumberLibrary**
 Moreover, the assemly `Dodoni.BasicMathLibrary` provides the infrastructure for random number generation etc., but no specific implementations for it. 
