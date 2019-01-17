@@ -89,7 +89,7 @@ Provides [Special functions](http://en.wikipedia.org/wiki/List_of_mathematical_f
 (error function), <sub>1</sub>F<sub>1</sub> (Hypergeometric function) etc. 
 
 The assembly `Dodoni.BasicMathLibrary` does not contain implementations for special functions, except for the (inverse) cumulative distribution 
-function of the Standard normal distribution which is accessible via the class `StandardNormalDistribution` only. 
+function of the Standard normal distribution which is accessible via the class `StandardNormalDistribution`. 
 Use the [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/index)(MEF) as described above to dynamically 
 link to some external mathematical library that implements `SpecialFunction.ILibrary`. 
 
@@ -171,8 +171,8 @@ int rootCount = Polynomial.RootFinder.Analytical.GetRoots(
                      out roots[0], out roots[1], out roots[2], out roots[3]);
 ```
 
- **MultiDimOptimizer, OneDimOptimizer**
-Provides the infrastructure for optimization for 1- and multi-dimensional problems, but no specific implementations for it. 
+ **OneDimOptimizer**
+Provides the infrastructure for 1-dimensional optimization problems, but no specific implementations for it. 
 
 ``` csharp
 var opt = new BrentOptimizer(); // from Dodoni.CommonMathLibrary
@@ -183,20 +183,55 @@ optAlgorithm.Function = opt.Function.Create(x => (x - 1.0) * (x - 1.0));
 
 var state = optAlgorithm.FindMinimum(initialGuess, out double actualArgMin, out double actualMinimum);
 ```
-For the 1-dimensional case `OneDimOptimizer` serves as factory for `IOneDimOptimizerAlgorithm` objects that encapsulates the algorithm with respect to a specific constraint. 
+`OneDimOptimizer` serves as factory for `IOneDimOptimizerAlgorithm` objects that encapsulates the algorithm with respect to a specific constraint. 
 
-In the multi-dimensional case it is rather complex: `MultiDimOptimizer` is the abstract base class for
+ **MultiDimOptimizer**
+Provides the infrastructure for optimization for multi-dimensional optimization problems, but no specific implementations for it. 
+
+`MultiDimOptimizer` is the abstract base class for
 * `OrdinaryMultiDimOptimizer`: min<sub>x</sub> f(x), where f is a real-valued function,
 * `MultivariateOptimizer`: min<sub>x</sub> &#124;&#124;f(x)&#124;&#124;<sup>2</sup>, where f(x) = (f<sub>1</sub>(x),...,f<sub>m</sub>(x)) is a multivariate function,
 * `QuadraticProgram`: min<sub>x</sub> 1/2 * x' * A * x + b' * x.
 
 An object of the above type contains factories for constraints, objective functions as well as for `IMultiDimOptimizerAlgorithm` objects. 
 The latter represents the algorithm itself. The internal representation of objective functions and constraints could be different 
-for each implementation, therefore a individual factory is required. Some extension methods have been added, 
-for example `SetFunction`, which allows a intiutive use. 
+for each implementation, therefore an individual factory is required. Some extension methods have been added, 
+for example `SetFunction`, which allows an more intiutive use. 
+
+``` csharp
+var optimizer = new GoldfarbIdanaQuadraticProgram(); // from Dodoni.CommonMathLibrary
+var algorithm = optimizer.Create(2);
+
+var A = new DenseMatrix(2, 2, new[] { 4.0, -2.0, -2.0, 4 - 0 });  // = (4 & -2 \\ -2 & 4)
+var b = new[] { 6.0, 0.0 };
+
+algorithm.Function = optimizer.Function.Create(A, b);
+
+var argMin = new double[2];
+var state = algorithm.FindMinimum(argMin, out double actualMinimum);
+
+```
 
 `MultiDimRegion` and `Interval` are factories for _generic_ regions that should be converted into the specific `Multi/OneDimOptimizer.IConstraint` representation 
-in a way similar seen in the above code snippet. The framework should be able to cover arbitrary optimization algorithms.
+in a way similar to the following code snippet: 
+
+``` csharp
+ var optimizer = new NelderMeadOptimizer(NelderMeadOptimizer.StandardAbortCondition, MultiDimOptimizerConstraintProvider.BoxTransformation);  // from Dodoni.CommonMathLibrary
+ var constraint = optimizer.Constraint.Create(MultiDimRegion.Interval.Create(2, new[] { -2.0, -2.0 }, new[] { 2.0, 2.0 }));
+ var optimizerAlgorithm = optimizer.Create(constraint);
+ optimizerAlgorithm.Function = optimizer.Function.Create(2, z => // Goldstein Price function
+   {
+    var x = z[0];
+    var y = z[1];
+    return (1.0 + Math.Pow(x + y + 1.0, 2) * (19.0 - 14.0 * x + 3 * x * x - 14.0 * y + 6.0 * x * y + 3.0 * y * y)) * (30.0 + Math.Pow(2.0 * x - 3.0 * y, 2) * (18.0 - 32.0 * x + 12.0 * x * x + 48.0 * y - 36 * x * y + 27 * y * y));
+   });
+
+/* take an initial guess which is not extremly fare away from the argMin: */
+var argMin = new[]{ 0.25, -0.7};
+var state = optimizerAlgorithm.FindMinimum(argMin, out double minimum);
+
+```
+The framework should be able to cover arbitrary optimization algorithms.
 
  **OneDimNumericalConstAbscissaIntegrator vs. OneDimNumericalIntegrator**
 `OneDimNumericalIntegrator` and `OneDimNumericalConstAbscissaIntegrator` serves as abstract basis class for numerical integration. 
@@ -206,4 +241,12 @@ The latter assumes a constant set of abscissa to evaluate the specified function
  **RandomNumberLibrary**
 Moreover, the assemly `Dodoni.BasicMathLibrary` provides the infrastructure for random number generation etc., but no specific implementations for it. 
 
+``` csharp
 
+int sampleSize = 100;
+var sample = new double[sampleSize];
+IRandomNumberStream randomStream = GetRandomStream();
+
+randomStream.NextNumberSequence.Uniform(sampleSize, sample, 0.0, 1.0);
+
+```
