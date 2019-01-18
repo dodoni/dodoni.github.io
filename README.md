@@ -1,7 +1,12 @@
 ## Project Description
 **Dodoni.net** is a free/open-source library with the aim to provide an object-oriented framework for 
-* numerical computations, i.e. Linear Algebra operations, Numerical Integration, Fast-Fourier-Transformation, 1-/n-dimensional Optimization, 
-curve/surface fitting, special functions etc. 
+* numerical computations, i.e. 
+     * Linear Algebra operations, 
+     * Numerical Integration, 
+     * Fast-Fourier-Transformation, 
+     * 1-/n-dimensional Optimization, 
+     * curve/surface fitting, 
+     * special functions etc. 
 * quantitative finance (pricing and risk management).
 * actuarial science.
 
@@ -23,6 +28,9 @@ Fast-Fourier-Transformations etc. See [Documentation](Documentation.md) for furt
 * One useful by-product of the Dodoni.net project is a high-level extension of [Excel-DNA](https://excel-dna.net) which allowes 
 the development of Excel-AddIns. 
 * Dodoni.net is free for all use, and distributed under [MIT license](https://github.com/dodoni/dodoni.net/LICENSE.md) that also allows commercial use.
+
+The Dodoni.net project was hosted at [codeplex.com](https://archive.codeplex.com/?p=dodoni) before.
+
 
 #### Schedule/Roadmap
 The Dodoni.net project is divided into several assemblies, each of it is related to a specific purpose, see 
