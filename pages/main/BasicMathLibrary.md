@@ -66,8 +66,9 @@ LAPACK.LinearEquations.MatrixFactorization.dpotrf(BLAS.TriangularMatrixType.Lowe
  **FFT** 
 Serves as factory for (1-dimensional) Fast-Fourier transformations, i.e. 
 
-$$H_n = a * \sum_{k=0}^{N-1} h_k * exp( -/+ 2 \pi * i * k * n * \alpha),$$ 
-where \alpha=1/N for a ordinary (Fast) Fourier transformation and \alpha arbritrary for a Fractional (Fast) Fourier transformation. 
+$$ H_n = a * \sum_{k=0}^{N-1} h_k * exp( -/+ 2 \pi * i * k * n * \alpha), $$
+
+where $\alpha=1/N$ for a ordinary (Fast) Fourier transformation and $\alpha$ arbritrary for a Fractional (Fast) Fourier transformation. 
 
 ``` csharp
   int n = 16;
