@@ -1,0 +1,79 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+#  levels: one
+entries:
+- title: Sidebar
+  folders:
+
+  - title: Home
+    output: web
+    folderitems:
+    - title: Project description
+      url: /index.html
+      output: web    
+    
+    - title: News
+      url: /news.html
+      output: web
+
+  - title: Documentation
+    output: web
+    folderitems:
+    - title: Overview
+      url: /Documentation.html
+      output: web
+
+    - title: Dodoni.BasicComponents
+      url: /BasicComponents.html
+      output: web
+
+    - title: Dodoni.BasicMathLibrary
+      url: /BasicMathLibrary.html
+      output: web
+
+      subfolders:
+      - title: Dodoni.MathLibrary.Native
+        output: web
+        subfolderitems:
+        - title: ACML
+          url: /MathLibrary.Native.ACML.html
+          output: web
+
+        - title: BLAS
+          url: /MathLibrary.Native.BLAS.html
+          output: web
+
+        - title: CBLAS
+          url: /MathLibrary.Native.CBLAS.html
+          output: web
+
+        - title: FFTW
+          url: /MathLibrary.Native.FFTW.html
+          output: web
+
+        - title: LibM
+          url: /MathLibrary.Native.LibM.html
+          output: web
+
+        - title: MKL
+          url: /MathLibrary.Native.MKL.html
+          output: web
+
+        - title: NLopt
+          url: /MathLibrary.Native.NLopt.html
+          output: web
+
+        - title: Yeppp
+          url: /MathLibrary.Native.Yeppp.html
+          output: web
+
+    - title: Dodoni.CommonMathLibrary
+      url: /CommonMathLibrary.html
+      output: web
+
+    - title: Dodoni.FinanceBasics
+      url: /FinanceBasics.html
+      output: web
+
+
+
+
