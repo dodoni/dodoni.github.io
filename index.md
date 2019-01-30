@@ -29,14 +29,15 @@ which can be interpreted as **C** (for the language C#) as well.
 
 #### General
 Dodoni.net is developed using .NET. The complete feature set of Dodoni.net requires external libraries for 
-[BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/), Random Number Generators, 
-Fast-Fourier-Transformations etc. See [Documentation](Documentation) for further details.
+[BLAS](http://www.netlib.org/blas/), [LAPACK](http://www.netlib.org/lapack/),  Random Number Generators, Fast-Fourier-Transformations etc. 
+See [Documentation](Documentation) for further details.
 
 * One useful by-product of the Dodoni.net project is a high-level extension of [Excel-DNA](https://excel-dna.net) which allowes 
 the development of Excel-AddIns. 
 * Dodoni.net is free for all use, and distributed under [MIT license](https://github.com/dodoni/dodoni.net/LICENSE.md) that also allows commercial use.
 
-The Dodoni.net project was hosted at [codeplex.com](https://archive.codeplex.com/?p=dodoni) before.
+The Dodoni.net project was hosted at [codeplex.com](https://archive.codeplex.com/?p=dodoni) before. The GitHub's pages are based on [Jekyll Doc Theme](https://idratherbewriting.com/documentation-theme-jekyll/), a Jekyll-based theme designed for documentation and help systems.
+
 
 
 #### Schedule/Roadmap
